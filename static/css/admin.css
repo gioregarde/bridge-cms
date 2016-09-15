@@ -1,0 +1,55 @@
+/* Admin CSS */
+input[type="submit"] {
+    background: #003d99;
+    color: #ffffff;
+    border: 0;
+    padding: 1px 5px;
+    font-weight: bold;
+}
+input[type="submit"]:active {
+    background: #ffffff;
+    color: #003d99;
+    border: 0;
+    padding: 1px 5px;
+    transition-duration: 0.5s;
+}
+header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 45px;
+}
+header div {
+    display: inline-block;
+    background: #003d99;
+    color: #ffffff;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding: 5px 10px 1px 10px;
+}
+header div span {
+    font-size: 25px;
+}
+content {
+    position: absolute;
+    left: 0;
+    top: 45px;
+    height: calc(100% - 65px);
+}
+content form {
+    margin-left: 5px;
+}
+content form input {
+    display: block;
+    margin-bottom: 5px;
+}
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 20px;
+}
+footer span {
+    margin-left: 5px;
+    font-size: 15px;
+}
