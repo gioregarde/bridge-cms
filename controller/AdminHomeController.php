@@ -9,7 +9,7 @@ class AdminHomeController extends BaseController {
 
     function action() {
         parent::action();
-
+        authenticateForward();
     }
 
 }

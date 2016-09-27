@@ -1,0 +1,48 @@
+header, content, footer {
+    background: #1E5799;
+}
+header div, header a, footer span {
+    display: none;
+}
+content form {
+    color: #FFF;
+    position: absolute;
+    height: 200px;
+    width: 300px;
+    top: calc(50% - 145px);
+    left: calc(50% - 150px);
+    text-align: center;
+
+    box-shadow: 0px 0px 10px 1px #FFF;
+}
+content form input {
+    display: block;
+    border: 0;
+    height: 30px;
+    width: 220px;
+    border-radius: 15px;
+    margin: 5px auto;
+    text-align: center;
+    font-size: 20px;
+    color: #1E5799;
+    background: #FFF;
+
+    transition: .5s;
+}
+content form input:hover,
+content form input:focus {
+    width: 250px;
+    color: #FFF;
+    background: #1E5799;
+}
+content form input[type="submit"] {
+    margin: 15px auto;
+    color: #FFF;
+    background: #1E5799;
+    width: 220px;
+    transition: .2s;
+}
+content form input[type="submit"]:active,
+content form input[type="submit"]:hover {
+    font-weight: bold;
+}

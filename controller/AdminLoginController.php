@@ -11,13 +11,14 @@ class AdminLoginController extends BaseController {
         parent::action();
         if ($this -> form -> getAction() == 'logout') {
             authenticate('', '');
-            redirect('admin/login');
+            redirect('/admin/login');
         }
+        redirectLoginHttps();
         if ($this -> form -> valid()) {
             authenticate($this -> form -> getUsername(), $this -> form -> getPassword());
         }
         if (isAuthenticated()) {
-            redirect('admin/home');
+            redirect('/admin/home');
         }
     }
 

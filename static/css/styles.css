@@ -1,0 +1,25 @@
+/* Common */
+h1, h2, h3, h4, h5 {
+    margin: 15px 0px;
+}
+.cambria-font {
+    font-family: Cambria,Georgia,serif;
+}
+.arial-font {
+    font-family: Arial,Helvetica Neue,Helvetica,sans-serif;;
+}
+.arial-black-font {
+    font-family: Arial Black,Arial Bold,Gadget,sans-serif;
+}
+.brush-font {
+    font-family: Brush Script MT,cursive;
+}
+.papyrus-font {
+    font-family: Papyrus,fantasy;
+}
+.calibri-font {
+    font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;
+}
+.lucida-font {
+    font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Geneva,Verdana,sans-serif;
+}
