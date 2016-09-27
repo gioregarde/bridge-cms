@@ -2,10 +2,8 @@
 
 class AdminLoginController extends BaseController {
 
-    function __construct() {
-        parent::__construct();
-        $this -> form = new AdminLoginForm();
-        $this -> view = 'page/admin/login.php';
+    function __construct($path) {
+        parent::__construct($path);
         $this -> layout = 'admin.php';
     }
 

@@ -2,10 +2,8 @@
 
 class AdminHomeController extends BaseController {
 
-    function __construct() {
-        parent::__construct();
-        $this -> form = new AdminHomeForm();
-        $this -> view = 'page/admin/home.php';
+    function __construct($path) {
+        parent::__construct($path);
         $this -> layout = 'admin.php';
     }
 

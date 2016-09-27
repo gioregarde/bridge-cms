@@ -4,7 +4,9 @@ class Properties {
 
     const REGEX_URL = '/^([A-Za-z0-9]+)$/';
     const PATH_DIV = '/';
-    const PATH_EXT = '.php';
+    const PATH_EXT_PHP = '.php';
+    const PATH_EXT_CSS = '.css';
+    const PATH_EXT_JS = '.js';
 
     const DEBUG_LEVEL = 'debug.level';
     const DEBUG_LEVEL_WARN = 0;
@@ -18,6 +20,7 @@ class Properties {
     const DB_PASS = 'db.pass';
 
     const FILE_EXT_CONTROLLER = 'file.ext.controller';
+    const FILE_EXT_FORM = 'file.ext.form';
 
     const PATH_CORE = 'path.core';
     const PATH_CONTROLLER = 'path.controller';
@@ -26,6 +29,7 @@ class Properties {
     const PATH_FORM = 'path.form';
     const PATH_UTILS = 'path.utils';
     const PATH_CONSTANTS = 'path.constants';
+    const PATH_PAGE = 'path.page';
     const PATH_HEADER = 'path.header';
     const PATH_FOOTER = 'path.footer';
     const PATH_MISC = 'path.misc';

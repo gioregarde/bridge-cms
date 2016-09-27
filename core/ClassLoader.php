@@ -12,8 +12,8 @@
         );
 
         foreach ($directories as $directory) {
-            if (file_exists($directory.$class_name.Properties::PATH_EXT)) {
-                require_once($directory.$class_name.Properties::PATH_EXT);
+            if (file_exists($directory.$class_name.Properties::PATH_EXT_PHP)) {
+                require_once($directory.$class_name.Properties::PATH_EXT_PHP);
                 return;
             }
         }
