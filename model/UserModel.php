@@ -9,8 +9,8 @@ class UserModel extends BaseModel {
     private $datetime;
 
     function __construct($par = null) {
+        parent::__construct($par);
         if (is_array($par)) {
-            $this -> id = $par['id'];
             $this -> username = $par['username'];
             $this -> password = $par['password'];
             $this -> enabled = $par['enabled'];

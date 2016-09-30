@@ -4,13 +4,94 @@ header {
     top: 0;
     height: 45px;
     width: 100%;
+    background: #1E5799;
+    z-index: 2000;
 }
+header a.bridge-logo {
+    display: inline-block;
+    color: #FFF;
+    font-size: 30px;
+    margin-left: 5px;
+    margin-top: 3px;
+    padding: 5px 10px 1px 10px;
+}
+header a.bridge-logo:hover {
+    color: #CCC;
+}
+
+header ul.navigation {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 20px;
+    color: #FFF;
+}
+header ul.navigation > li {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+}
+header ul.navigation > li span {
+    display: block;
+    margin-left: 5px;
+    margin-bottom: 7px;
+}
+header ul.navigation ul {
+    display: none;
+    position: absolute;
+    background: #1E5799;
+}
+header ul.navigation ul li {
+    margin: 5px 10px;
+    white-space: nowrap;
+}
+header ul.navigation > li:hover ul {
+    display: block;
+}
+header ul.navigation > li:hover span,
+header ul.navigation ul li:hover {
+    color: #CCC;
+}
+
+header div.settings {
+    display: inline-block;
+    float: right;
+    color: #FFF;
+    font-size: 20px;
+    position: relative;
+}
+header div.settings span {
+    float: right;
+    margin: 10px 20px 10px 0;
+}
+header div.settings ul {
+    display: none;
+    background: #1E5799;
+    float: left;
+    right: 0;
+    width: 140px;
+    position: absolute;
+}
+header div.settings:hover ul {
+    display: block;
+}
+header div.settings ul li {
+    margin: 5px 0 5px 10px;
+}
+header div.settings ul li a {
+    color: #FFF;
+}
+header div.settings:hover span,
+header div.settings ul li:hover a {
+    color: #CCC;
+}
+
 content {
     position: absolute;
     left: 0;
     top: 45px;
     height: calc(100% - 65px);
     width: 100%;
+    z-index: 1000;
 }
 footer {
     position: absolute;
@@ -18,4 +99,5 @@ footer {
     bottom: 0;
     height: 20px;
     width: 100%;
+    z-index: 2000;
 }

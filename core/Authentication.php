@@ -15,7 +15,7 @@
 
     function authenticate($username, $password) {
         $user_model = UserDao::findByUsername($username);
-        if ($user_model != null && sha1($password) == sha1($user_model -> getPassword())) {
+        if ($user_model != null && sha1($password) == $user_model -> getPassword()) {
             $_SESSION['authenticated'] = true;
         } else {
             session_destroy();

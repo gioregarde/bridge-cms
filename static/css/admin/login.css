@@ -1,8 +1,8 @@
 header, content, footer {
     background: #1E5799;
 }
-header div, header a, footer span {
-    display: none;
+header *, footer * {
+    display: none !important;
 }
 content form {
     color: #FFF;

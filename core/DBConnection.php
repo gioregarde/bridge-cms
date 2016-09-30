@@ -36,9 +36,20 @@ class DBConnection {
         if ($condition != null) {
             $statement .= self::WHERE.$condition;
         }
-        info($statement);
         $req = self::getConnection() -> query($statement);
-        return $req->fetchAll();
+        return $req -> fetchAll();
+    }
+
+    public static function insert($table, $field) {
+        $statement = '';
+        try {
+            $conn = self::getConnection();
+            $conn->beginTransaction();
+            $conn->exec($statement);
+            $conn->commit();
+        } catch(PDOException $e) {
+            $conn->rollback();
+        }
     }
 
 }
