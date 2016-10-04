@@ -11,9 +11,10 @@ header a.bridge-logo {
     display: inline-block;
     color: #FFF;
     font-size: 30px;
-    margin-left: 5px;
-    margin-top: 3px;
-    padding: 5px 10px 1px 10px;
+    height: 45px;
+    line-height: 45px;
+    margin-left: 10px;
+    padding-right: 10px;
 }
 header a.bridge-logo:hover {
     color: #CCC;
@@ -24,21 +25,27 @@ header ul.navigation {
     margin-left: 20px;
     font-size: 20px;
     color: #FFF;
+    height: 45px;
+    line-height: 45px;
+    vertical-align: top;
 }
 header ul.navigation > li {
     position: relative;
     display: inline-block;
     margin-right: 10px;
 }
+header ul.navigation > li a {
+    color: #FFF;
+}
+header ul.navigation > li a,
 header ul.navigation > li span {
-    display: block;
-    margin-left: 5px;
-    margin-bottom: 7px;
+    margin-left: 10px;
 }
 header ul.navigation ul {
     display: none;
     position: absolute;
     background: #1E5799;
+    line-height: 30px;
 }
 header ul.navigation ul li {
     margin: 5px 10px;
@@ -47,9 +54,11 @@ header ul.navigation ul li {
 header ul.navigation > li:hover ul {
     display: block;
 }
+header ul.navigation > li:hover a,
 header ul.navigation > li:hover span,
 header ul.navigation ul li:hover {
     color: #CCC;
+    cursor: pointer;
 }
 
 header div.settings {
@@ -58,10 +67,12 @@ header div.settings {
     color: #FFF;
     font-size: 20px;
     position: relative;
+    height: 45px;
+    line-height: 45px;
+    vertical-align: top;
 }
 header div.settings span {
-    float: right;
-    margin: 10px 20px 10px 0;
+    margin-right: 20px;
 }
 header div.settings ul {
     display: none;
@@ -70,6 +81,7 @@ header div.settings ul {
     right: 0;
     width: 140px;
     position: absolute;
+    line-height: 30px;
 }
 header div.settings:hover ul {
     display: block;
@@ -83,6 +95,7 @@ header div.settings ul li a {
 header div.settings:hover span,
 header div.settings ul li:hover a {
     color: #CCC;
+    cursor: pointer;
 }
 
 content {

@@ -21,10 +21,12 @@ class Properties {
 
     const FILE_EXT_CONTROLLER = 'file.ext.controller';
     const FILE_EXT_FORM = 'file.ext.form';
+    const FILE_EXT_DTO = 'file.ext.dto';
 
     const PATH_CORE = 'path.core';
     const PATH_CONTROLLER = 'path.controller';
     const PATH_DAO = 'path.dao';
+    const PATH_DTO = 'path.dto';
     const PATH_MODEL = 'path.model';
     const PATH_FORM = 'path.form';
     const PATH_UTILS = 'path.utils';

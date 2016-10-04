@@ -5,6 +5,7 @@
         $directories = array (
             Properties::get(Properties::PATH_CONTROLLER),
             Properties::get(Properties::PATH_DAO),
+            Properties::get(Properties::PATH_DTO),
             Properties::get(Properties::PATH_MODEL),
             Properties::get(Properties::PATH_FORM),
             Properties::get(Properties::PATH_UTILS),

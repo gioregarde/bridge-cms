@@ -1,25 +1,28 @@
 <a class="bridge-logo" href="/admin/home">Bridge</a>
 <ul class="navigation">
     <li>
-        <span>Site</span>
+        <a href="/admin/site">Site</a>
     </li>
     <li>
-        <span>Header</span>
+        <a href="/admin/pages">Pages</a>
     </li>
     <li>
-        <span>Footer</span>
+        <a href="/admin/header">Header</a>
     </li>
     <li>
-        <span>Navigation</span>
+        <a href="/admin/footer">Footer</a>
     </li>
     <li>
-        <span>Images</span>
+        <a href="/admin/navigation">Navigation</a>
     </li>
     <li>
-        <span>Files</span>
+        <a href="/admin/images">Images</a>
     </li>
     <li>
-        <span>Group</span>
+        <a href="/admin/files">Files</a>
+    </li>
+    <li>
+        <a href="/admin/group">Group</a>
         <ul>
             <li>Group 1</li>
             <li>Group 2</li>

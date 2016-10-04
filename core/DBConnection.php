@@ -2,11 +2,6 @@
 
 class DBConnection {
 
-    const SELECT_ALL = ' SELECT * FROM ';
-    const SELECT = ' SELECT ';
-    const FROM = ' FROM ';
-    const WHERE = ' WHERE ';
-
     private static function getConnection() {
         static $con;
         if (!isset($con)) {
@@ -21,35 +16,14 @@ class DBConnection {
         return $con;
     }
 
-    public static function sql($statement) {
-        $result = self::getConnection() -> query($statement);
-        return $result -> fetchAll();
-    }
-
-    public static function select($table, $field = null, $condition = null) {
-        $statement = '';
-        if ($field != null) {
-            $statement .= self::SELECT.$field.self::FROM.$table;
+    public static function sql($statement, $values = null) {
+        $ps = self::getConnection() -> prepare($statement);
+        if ($values) {
+            $ps -> execute($values);
         } else {
-            $statement .= self::SELECT_ALL.$table;
+            $ps -> execute();
         }
-        if ($condition != null) {
-            $statement .= self::WHERE.$condition;
-        }
-        $req = self::getConnection() -> query($statement);
-        return $req -> fetchAll();
-    }
-
-    public static function insert($table, $field) {
-        $statement = '';
-        try {
-            $conn = self::getConnection();
-            $conn->beginTransaction();
-            $conn->exec($statement);
-            $conn->commit();
-        } catch(PDOException $e) {
-            $conn->rollback();
-        }
+        return $ps;
     }
 
 }
