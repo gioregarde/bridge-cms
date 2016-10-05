@@ -105,7 +105,12 @@ content {
     height: calc(100% - 65px);
     width: 100%;
     z-index: 1000;
+    overflow: auto;
 }
+content form label {
+    display: block;
+}
+
 footer {
     position: absolute;
     left: 0;

@@ -4,6 +4,12 @@ header, content, footer {
 header *, footer * {
     display: none !important;
 }
+header {
+    z-index: 1000;
+}
+content {
+    z-index: 2000;
+}
 content form {
     color: #FFF;
     position: absolute;

@@ -2,10 +2,12 @@
 
 class BaseForm {
 
-    private $action;
+    protected $action;
 
     function __construct() {
-        $this -> action = $this -> getParam('action');
+        foreach ($_REQUEST as $key => $param ) {
+            $this -> $key = htmlspecialchars($param);
+        }
     }
 
     protected function getParam($param) {

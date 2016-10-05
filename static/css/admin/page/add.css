@@ -1,0 +1,8 @@
+div.script-panel {
+    display: block;
+    height: 400px;
+    width: 90%;
+}
+textarea.script-textarea {
+    display: none;
+}

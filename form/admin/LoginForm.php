@@ -2,13 +2,11 @@
 
 class AdminLoginForm extends BaseForm {
 
-    private $username;
-    private $password;
+    protected $username;
+    protected $password;
 
     function __construct() {
         parent::__construct();
-        $this -> username = $this -> getParam('username');
-        $this -> password = $this -> getParam('password');
     }
 
     function setUsername($par) {

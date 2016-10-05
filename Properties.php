@@ -3,6 +3,8 @@
 class Properties {
 
     const REGEX_URL = '/^([A-Za-z0-9]+)$/';
+    const REGEX_CLASS_SPLIT = '/(?=[A-Z])/';
+
     const PATH_DIV = '/';
     const PATH_EXT_PHP = '.php';
     const PATH_EXT_CSS = '.css';

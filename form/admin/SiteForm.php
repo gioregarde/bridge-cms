@@ -2,11 +2,10 @@
 
 class AdminSiteForm extends BaseForm {
 
-    private $name;
-    
+    protected $name;
+
     function __construct() {
         parent::__construct();
-        $this -> name = $this -> getParam('name');
     }
 
     function setName($par) {
