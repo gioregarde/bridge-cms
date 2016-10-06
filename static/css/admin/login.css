@@ -9,6 +9,8 @@ header {
 }
 content {
     z-index: 2000;
+    left: 0;
+    width: 100%;
 }
 content form {
     color: #FFF;

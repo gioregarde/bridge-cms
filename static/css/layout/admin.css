@@ -1,3 +1,7 @@
+body {
+    background: #EEE;
+}
+
 header {
     position: absolute;
     left: 0;
@@ -100,15 +104,83 @@ header div.settings ul li:hover a {
 
 content {
     position: absolute;
-    left: 0;
+    left: calc(50% - 501px);
     top: 45px;
     height: calc(100% - 65px);
     width: 100%;
     z-index: 1000;
     overflow: auto;
+    width: 1000px;
+    background: #FFF;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+}
+content form {
+    padding: 10px 0;
+    margin: 10px;
+    border-top: 3px solid #6599FF;
 }
 content form label {
     display: block;
+}
+content form label.field-text {
+    background: #6599FF;
+    height: 30px;
+    position: relative;
+}
+content form label.field-text span {
+    display: inline-block;
+    color: #FFF;
+    height: 30px;
+    width: 20%;
+    padding-left: 10px;
+    vertical-align: top;
+    line-height: 30px;
+    font-weight: bold;
+}
+content form label.field-text input {
+    position: absolute;
+    color: #1E5799;
+    border: 0;
+    height: 26px;
+    width: 75%;
+    margin-top: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    top: 0;
+    right: 1px;
+}
+content form input[type='submit'] {
+    background: #6599FF;
+    border: 0;
+    width: 100%;
+    color: #FFF;
+    font-weight: bold;
+    height: 30px;
+    margin-top: 5px;
+}
+content form input[type='submit']:hover {
+    background: #1E5799;
+}
+
+content form label.field-ace {
+    background: #6599FF;
+    padding-bottom: 1px;
+}
+content form label.field-ace span {
+    color: #FFF;
+    height: 30px;
+    padding-left: 10px;
+    vertical-align: top;
+    line-height: 30px;
+    font-weight: bold;
+}
+content form label.field-ace div.script-panel {
+    display: block;
+    height: 400px;
+    width: calc(100% - 2px);
+    margin-left: 1px;
+    margin-bottom: 1px;
 }
 
 footer {
