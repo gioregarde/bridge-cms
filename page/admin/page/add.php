@@ -22,6 +22,10 @@
         <div class="script-panel" id="js"></div>
         <textarea class="script-textarea" name="js"></textarea>
     </label>
-
+     <label class="field-ace">
+        <span>Controller</span>
+        <div class="script-panel" id="controller"></div>
+        <textarea class="script-textarea" name="controller"></textarea>
+    </label>
     <input type="submit" name="action" value="Add">
 </form>

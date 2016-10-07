@@ -7,6 +7,7 @@ class AdminPageAddForm extends BaseForm {
     protected $content;
     protected $css;
     protected $js;
+    protected $controller;
 
     function __construct() {
         parent::__construct();
@@ -50,6 +51,18 @@ class AdminPageAddForm extends BaseForm {
 
     function getJs() {
         return $this -> js;
+    }
+
+    function setController($par) {
+        $this -> controller = $par;
+    }
+
+    function getController() {
+        return $this -> controller;
+    }
+
+    function valid() {
+        return $this -> name != null && $this -> url;
     }
 
 }

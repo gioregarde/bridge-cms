@@ -26,6 +26,10 @@ class DBConnection {
         return $ps;
     }
 
+    public static function getInsertedIndex() {
+        return self::getConnection() -> lastInsertId();
+    }
+
 }
 
 ?>

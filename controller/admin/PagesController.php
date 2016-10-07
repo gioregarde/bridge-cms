@@ -10,6 +10,9 @@ class AdminPagesController extends BaseController {
     function action() {
         parent::action();
         authenticateForward();
+
+        $page_model_array = PageDao::findAllByPageType(1);
+
     }
 
 }

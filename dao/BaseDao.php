@@ -17,6 +17,11 @@ class BaseDao {
         return DBConnection::sql($statement, $values) -> fetchAll();
     }
 
+    protected static function insert($statement, $values) {
+        DBConnection::sql($statement, $values);
+        return DBConnection::getInsertedIndex();
+    }
+
     protected static function update($statement, $values) {
         return DBConnection::sql($statement, $values) -> rowCount();
     }

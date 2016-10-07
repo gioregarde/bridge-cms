@@ -167,7 +167,7 @@ content form label.field-ace {
     background: #6599FF;
     padding-bottom: 1px;
 }
-content form label.field-ace span {
+content form label.field-ace > span {
     color: #FFF;
     height: 30px;
     padding-left: 10px;
@@ -181,6 +181,10 @@ content form label.field-ace div.script-panel {
     width: calc(100% - 2px);
     margin-left: 1px;
     margin-bottom: 1px;
+}
+content form label.field-text,
+content form label.field-ace {
+    margin-bottom: 2px;
 }
 
 footer {
