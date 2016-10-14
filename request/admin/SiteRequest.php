@@ -1,6 +1,6 @@
 <?php
 
-class AdminSiteForm extends BaseForm {
+class AdminSiteRequest extends BaseRequest {
 
     protected $name;
 
@@ -17,8 +17,10 @@ class AdminSiteForm extends BaseForm {
     }
 
     function valid() {
-        return $this -> name != null;
+        parent::addError(ErrorUtil::isRequired('Name', $this -> name));
+        return !parent::hasErrors();
     }
+
 }
 
 ?>

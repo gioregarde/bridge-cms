@@ -1,6 +1,6 @@
 <?php
 
-class AdminPageAddForm extends BaseForm {
+class AdminPageAddRequest extends BaseRequest {
 
     protected $name;
     protected $url;
@@ -62,7 +62,9 @@ class AdminPageAddForm extends BaseForm {
     }
 
     function valid() {
-        return $this -> name != null && $this -> url;
+        parent::addError(ErrorUtil::isRequired('Name', $this -> name));
+        parent::addError(ErrorUtil::isRequired('Url', $this -> url));
+       return !parent::hasErrors();
     }
 
 }

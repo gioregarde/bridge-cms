@@ -1,6 +1,6 @@
 <?php
 
-class AdminPagesForm extends BaseForm {
+class AdminHomeRequest extends BaseRequest {
 
     function __construct() {
         parent::__construct();

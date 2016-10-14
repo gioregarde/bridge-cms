@@ -10,14 +10,20 @@ class AdminSiteController extends BaseController {
     function action() {
         parent::action();
         authenticateForward();
-        if ($this -> form -> getAction() == 'Update' && $this -> form -> valid()) {
-            $site_model = new SiteModel();
-            ObjectUtil::copy($this -> form, $site_model);
-            SiteDao::update($site_model);
-            $this -> dto = new AdminSiteDto($site_model);
+        if ($this -> request -> getAction() == 'Update') {
+            if ($this -> request -> valid()) {
+                $site_model = new SiteModel();
+                ObjectUtil::copy($this -> request, $site_model);
+                SiteDao::update($site_model);
+                $this -> response -> setDto(new AdminSiteDto($site_model));
+                $this -> response -> addNotification('Site updated.');
+            } else {
+                $this -> response -> setError($this -> request -> getErrors());
+                $this -> response -> setDto(new AdminSiteDto($this -> request));
+            }
         } else {
             $site_model = SiteDao::find();
-            $this -> dto = new AdminSiteDto($site_model);
+            $this -> response -> setDto(new AdminSiteDto($site_model));
         }
     }
 

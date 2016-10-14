@@ -6,21 +6,21 @@ class BaseController {
     protected $view;
     protected $css;
     protected $js;
-    protected $form;
-    protected $dto;
+    protected $request;
+    protected $response;
 
     function __construct($path = null) {
         if ($path != null) {
-            $form_name = join($path).Properties::get(Properties::FILE_EXT_FORM);
-            $dto_name = join($path).Properties::get(Properties::FILE_EXT_DTO);
-            $this -> form = new $form_name();
-            $this -> dto = new $dto_name();
+            $request_name = join($path).Properties::get(Properties::FILE_EXT_REQUEST);
+            $response_name = join($path).Properties::get(Properties::FILE_EXT_RESPONSE);
+            $this -> request = new $request_name();
+            $this -> response = new $response_name();
             $this -> view = Properties::get(Properties::PATH_PAGE).strtolower(join(Properties::PATH_DIV, $path).Properties::PATH_EXT_PHP);
             $this -> css = Properties::get(Properties::PATH_CSS).strtolower(join(Properties::PATH_DIV, $path).Properties::PATH_EXT_CSS);
             $this -> js = Properties::get(Properties::PATH_JS).strtolower(join(Properties::PATH_DIV, $path).Properties::PATH_EXT_JS);
         } else {
-            $this -> form = new BaseForm();
-            $this -> dto = new BaseDto();
+            $this -> request = new BaseRequest();
+            $this -> response = new BaseResponse();
             $this -> view = 'page/index.php';
             $this -> css = '';
             $this -> js = '';
@@ -34,7 +34,9 @@ class BaseController {
 
     function render() {
         $this -> action();
-        $dto = $this -> dto;
+        $response = $this -> response;
+        $dto = $this -> response -> getDto();
+        $dto_array = $this -> response -> getDtoArray();
         require_once('page/layout/base.php');
     }
 

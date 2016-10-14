@@ -1,6 +1,6 @@
 <?php
 
-class AdminLoginForm extends BaseForm {
+class AdminLoginRequest extends BaseRequest {
 
     protected $username;
     protected $password;

@@ -11,24 +11,27 @@ class AdminPageAddController extends BaseController {
         parent::action();
         authenticateForward();
 
-        if ($this -> form -> getAction() == 'Add') {
-            if ($this -> form -> valid()) {
+        if ($this -> request -> getAction() == 'Add') {
+            if ($this -> request -> valid()) {
                 $page_model = new PageModel();
-                ObjectUtil::copy($this -> form, $page_model);
+                ObjectUtil::copy($this -> request, $page_model);
                 $page_model -> setPageTypeId(1);
                 $page_model -> setEnabled(1);
                 PageDao::insert($page_model);
 
                 $filename = PageUtil::generateFilename($page_model);
-                PageUtil::writeHTML($filename, htmlspecialchars_decode($this -> form -> getContent()));
-                PageUtil::writeCSS($filename, htmlspecialchars_decode($this -> form -> getCss()));
-                PageUtil::writeJS($filename, htmlspecialchars_decode($this -> form -> getJs()));
-                PageUtil::writeController($filename, htmlspecialchars_decode($this -> form -> getController()));
+                PageUtil::writeHTML($filename, htmlspecialchars_decode($this -> request -> getContent()));
+                PageUtil::writeCSS($filename, htmlspecialchars_decode($this -> request -> getCss()));
+                PageUtil::writeJS($filename, htmlspecialchars_decode($this -> request -> getJs()));
+                PageUtil::writeController($filename, htmlspecialchars_decode($this -> request -> getController()));
 
-                redirect('/admin/pages');
+                redirect('/admin/pages?action=Success&name='.$page_model -> getName());
             } else {
-                console('invalid');
+                $this -> response -> setError($this -> request -> getErrors());
+                $this -> response -> setDto(new AdminPageAddDto($this -> request));
             }
+        } else {
+            $this -> response -> setDto(new AdminPageAddDto());
         }
 
     }

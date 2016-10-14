@@ -7,14 +7,16 @@
             Properties::get(Properties::PATH_DAO),
             Properties::get(Properties::PATH_DTO),
             Properties::get(Properties::PATH_MODEL),
-            Properties::get(Properties::PATH_FORM),
+            Properties::get(Properties::PATH_REQUEST),
+            Properties::get(Properties::PATH_RESPONSE),
             Properties::get(Properties::PATH_UTILS),
             Properties::get(Properties::PATH_CONSTANTS)
         );
 
         if (strpos($class_name, Properties::get(Properties::FILE_EXT_CONTROLLER)) !== false ||
-            strpos($class_name, Properties::get(Properties::FILE_EXT_FORM)) !== false ||
-            strpos($class_name, Properties::get(Properties::FILE_EXT_DTO)) !== false) {
+            strpos($class_name, Properties::get(Properties::FILE_EXT_DTO)) !== false ||
+            strpos($class_name, Properties::get(Properties::FILE_EXT_REQUEST)) !== false ||
+            strpos($class_name, Properties::get(Properties::FILE_EXT_RESPONSE)) !== false) {
 
             $path_list = preg_split(Properties::REGEX_CLASS_SPLIT, $class_name);
             array_shift($path_list);

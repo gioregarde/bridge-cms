@@ -22,15 +22,17 @@ class Properties {
     const DB_PASS = 'db.pass';
 
     const FILE_EXT_CONTROLLER = 'file.ext.controller';
-    const FILE_EXT_FORM = 'file.ext.form';
     const FILE_EXT_DTO = 'file.ext.dto';
+    const FILE_EXT_REQUEST= 'file.ext.request';
+    const FILE_EXT_RESPONSE = 'file.ext.response';
 
     const PATH_CORE = 'path.core';
     const PATH_CONTROLLER = 'path.controller';
     const PATH_DAO = 'path.dao';
     const PATH_DTO = 'path.dto';
     const PATH_MODEL = 'path.model';
-    const PATH_FORM = 'path.form';
+    const PATH_REQUEST = 'path.request';
+    const PATH_RESPONSE = 'path.response';
     const PATH_UTILS = 'path.utils';
     const PATH_CONSTANTS = 'path.constants';
     const PATH_PAGE = 'path.page';

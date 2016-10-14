@@ -1,7 +1,14 @@
 <form action="/admin/page/add" method="post">
+    <?php if ($response -> hasErrors()) { ?>
+        <label>
+            <?php foreach ($response -> getErrors() as $error) { ?>
+                <span>* <?php echo $error; ?></span>
+            <?php } ?>
+        </label>
+    <?php } ?>
     <label class="field-text">
         <span>Name</span>
-        <input type="text" name="name"/>
+        <input type="text" name="name" value="<?php echo $dto -> getName(); ?>"/>
     </label>
     <label class="field-text">
         <span>URL</span>
@@ -27,5 +34,7 @@
         <div class="script-panel" id="controller"></div>
         <textarea class="script-textarea" name="controller"></textarea>
     </label>
-    <input type="submit" name="action" value="Add">
+    <label>
+        <input type="submit" name="action" value="Add">
+    </label>
 </form>
