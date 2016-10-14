@@ -120,7 +120,8 @@ content {
 content form {
     display: block;
 }
-content form label {
+content form label,
+content form div.table-list {
     display: block;
     margin: 10px 10px 0px 10px;
     border-top: 1px solid #000;

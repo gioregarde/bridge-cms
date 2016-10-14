@@ -21,6 +21,11 @@ class PageDao extends BaseDao {
         $page_model -> setId(parent::insert($statement, array($page_model -> getPageTypeId(), $page_model -> getName(), $page_model -> getUrl(), $page_model -> getEnabled())));
     }
 
+    static function delete($id_array) {
+        $statement = "DELETE FROM PAGE WHERE ID IN (".implode(',', array_fill(0, count($id_array), '?')).')';
+        return parent::delete($statement, $id_array);
+    }
+
 }
 
 ?>

@@ -11,51 +11,75 @@ class PageUtil {
     const PATH_DYNAMIC_JS = 'resources/dynamic/js/';
     const PATH_DYNAMIC_CONTROLLER = 'resources/dynamic/controller/';
 
-    static function writeHTML($filename, $content) {
+    static function writeHtml($filename, $content) {
         if ($content) {
-            file_put_contents(self::PATH_DYNAMIC_HTML.$filename, $content);
+            return file_put_contents(self::PATH_DYNAMIC_HTML.$filename, $content);
         }
     }
 
-    static function getHTML($filename) {
-        if (file_exists(self::PATH_DYNAMIC_CONTROLLER.$filename)) {
-            file_get_contents(self::PATH_DYNAMIC_HTML.$filename);
+    static function getHtml($filename) {
+        if (file_exists(self::PATH_DYNAMIC_HTML.$filename)) {
+            return file_get_contents(self::PATH_DYNAMIC_HTML.$filename);
         }
     }
 
-    static function writeCSS($filename, $content) {
+    static function deleteHtml($filename) {
+        if (file_exists(self::PATH_DYNAMIC_HTML.$filename)) {
+            return unlink(self::PATH_DYNAMIC_HTML.$filename);
+        }
+    }
+
+    static function writeCss($filename, $content) {
         if ($content) {
-            file_put_contents(self::PATH_DYNAMIC_CSS.$filename, $content);
+            return file_put_contents(self::PATH_DYNAMIC_CSS.$filename, $content);
         }
     }
 
-    static function getCSS($filename) {
+    static function getCss($filename) {
         if (file_exists(self::PATH_DYNAMIC_CSS.$filename)) {
             return file_get_contents(self::PATH_DYNAMIC_CSS.$filename);
         }
     }
 
-    static function writeJS($filename, $content) {
-        if ($content) {
-            file_put_contents(self::PATH_DYNAMIC_JS.$filename, $content);
+    static function deleteCss($filename) {
+        if (file_exists(self::PATH_DYNAMIC_CSS.$filename)) {
+            return unlink(self::PATH_DYNAMIC_CSS.$filename);
         }
     }
 
-    static function getJS($filename) {
+    static function writeJs($filename, $content) {
+        if ($content) {
+            return file_put_contents(self::PATH_DYNAMIC_JS.$filename, $content);
+        }
+    }
+
+    static function getJs($filename) {
         if (file_exists(self::PATH_DYNAMIC_JS.$filename)) {
             return file_get_contents(self::PATH_DYNAMIC_JS.$filename);
         }
     }
 
+    static function deleteJs($filename) {
+        if (file_exists(self::PATH_DYNAMIC_JS.$filename)) {
+            return unlink(self::PATH_DYNAMIC_JS.$filename);
+        }
+    }
+
     static function writeController($filename, $content) {
         if ($content) {
-            file_put_contents(self::PATH_DYNAMIC_CONTROLLER.$filename, $content);
+            return file_put_contents(self::PATH_DYNAMIC_CONTROLLER.$filename, $content);
         }
     }
 
     static function getController($filename) {
         if (file_exists(self::PATH_DYNAMIC_CONTROLLER.$filename)) {
             return file_get_contents(self::PATH_DYNAMIC_CONTROLLER.$filename);
+        }
+    }
+
+    static function deleteController($filename) {
+        if (file_exists(self::PATH_DYNAMIC_CONTROLLER.$filename)) {
+            return unlink(self::PATH_DYNAMIC_CONTROLLER.$filename);
         }
     }
 

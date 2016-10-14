@@ -20,9 +20,9 @@ class AdminPageAddController extends BaseController {
                 PageDao::insert($page_model);
 
                 $filename = PageUtil::generateFilename($page_model);
-                PageUtil::writeHTML($filename, htmlspecialchars_decode($this -> request -> getContent()));
-                PageUtil::writeCSS($filename, htmlspecialchars_decode($this -> request -> getCss()));
-                PageUtil::writeJS($filename, htmlspecialchars_decode($this -> request -> getJs()));
+                PageUtil::writeHtml($filename, htmlspecialchars_decode($this -> request -> getContent()));
+                PageUtil::writeCss($filename, htmlspecialchars_decode($this -> request -> getCss()));
+                PageUtil::writeJs($filename, htmlspecialchars_decode($this -> request -> getJs()));
                 PageUtil::writeController($filename, htmlspecialchars_decode($this -> request -> getController()));
 
                 redirect('/admin/pages?action=Success&name='.$page_model -> getName());

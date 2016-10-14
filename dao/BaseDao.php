@@ -26,6 +26,10 @@ class BaseDao {
         return DBConnection::sql($statement, $values) -> rowCount();
     }
 
+    protected static function delete($statement, $values) {
+        return DBConnection::sql($statement, $values) -> rowCount();
+    }
+
 }
 
 ?>

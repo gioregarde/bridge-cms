@@ -3,6 +3,7 @@
 class AdminPagesRequest extends BaseRequest {
 
     protected $name;
+    protected $page_id;
 
     function __construct() {
         parent::__construct();
@@ -14,6 +15,14 @@ class AdminPagesRequest extends BaseRequest {
 
     function getName() {
         return $this -> name;
+    }
+
+    function setPageId($par) {
+        $this -> page_id = $par;
+    }
+
+    function getPageId() {
+        return $this -> page_id;
     }
 
 }

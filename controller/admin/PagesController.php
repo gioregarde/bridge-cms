@@ -13,6 +13,11 @@ class AdminPagesController extends BaseController {
 
         if ($this -> request -> getAction() == 'Success') {
             $this -> response -> addNotification($this -> request -> getName().' is created.');
+        } elseif ($this -> request -> getAction() == 'Delete') {
+            $count = PageDao::delete($this -> request -> getPageId());
+            if ($count > 0) {
+                $this -> response -> addNotification('Delete successful.');
+            }
         }
 
         $page_dto_array = array();
