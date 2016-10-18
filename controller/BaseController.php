@@ -9,6 +9,8 @@ class BaseController {
     protected $request;
     protected $response;
 
+    protected $filename;
+
     function __construct($path = null) {
         if ($path != null) {
             $request_name = join($path).Properties::get(Properties::FILE_EXT_REQUEST);
@@ -30,6 +32,12 @@ class BaseController {
 
     function action() {
         // common logic
+        if (get_class($this) == 'BaseController') {
+            $page_model = PageDao::findByUrl(ltrim($_SERVER['REQUEST_URI'], Properties::PATH_DIV));
+            if ($page_model -> getId()) {
+                $this -> filename = PageUtil::generateFilename($page_model);
+            }
+        }
     }
 
     function render() {

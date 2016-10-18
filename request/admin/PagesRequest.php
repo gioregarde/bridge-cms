@@ -25,6 +25,13 @@ class AdminPagesRequest extends BaseRequest {
         return $this -> page_id;
     }
 
+    function valid() {
+        if (!$this -> page_id) {
+            parent::addError('Please select one to delete');
+        }
+        return !parent::hasErrors();
+    }
+
 }
 
 ?>

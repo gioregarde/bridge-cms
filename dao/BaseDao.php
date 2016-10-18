@@ -13,6 +13,10 @@ class BaseDao {
         return $model_array;
     }
 
+    protected static function selectOne($statement, $values = null) {
+        return DBConnection::sql($statement, $values) -> fetch();
+    }
+
     protected static function select($statement, $values = null) {
         return DBConnection::sql($statement, $values) -> fetchAll();
     }
