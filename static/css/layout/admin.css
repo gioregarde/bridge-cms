@@ -148,6 +148,9 @@ content form label.field-ace div.script-panel {
     display: inline-block;
     vertical-align: top;
 }
+textarea.script-textarea {
+    display: none;
+}
 
 footer {
     position: absolute;

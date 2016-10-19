@@ -15,21 +15,6 @@
     <li>
         <a href="/admin/navigation">Navigation</a>
     </li>
-    <li>
-        <a href="/admin/images">Images</a>
-    </li>
-    <li>
-        <a href="/admin/files">Files</a>
-    </li>
-    <li>
-        <a href="/admin/group">Group</a>
-        <ul>
-            <li>Group 1</li>
-            <li>Group 2</li>
-            <li>Group 3</li>
-        </ul>
-    </li>
-    
 </ul>
 <div class="settings">
     <span>Admin &#9660;</span>

@@ -1,6 +1,6 @@
 <?php
 
-class AdminPageEditController extends BaseController {
+class AdminFooterAddController extends BaseController {
 
     function __construct($path) {
         parent::__construct($path);
@@ -11,13 +11,13 @@ class AdminPageEditController extends BaseController {
         parent::action();
         authenticateForward();
 
-        if ($this -> request -> getAction() == 'Update') {
+        if ($this -> request -> getAction() == 'Add') {
             if ($this -> request -> valid()) {
                 $page_model = new PageModel();
                 ObjectUtil::copy($this -> request, $page_model);
-                $page_model -> setPageTypeId(1);
+                $page_model -> setPageTypeId(3);
                 $page_model -> setEnabled(1);
-                PageDao::update($page_model);
+                PageDao::insert($page_model);
 
                 $filename = PageUtil::generateFilename($page_model);
                 PageUtil::writeHtml($filename, htmlspecialchars_decode($this -> request -> getContent()));
@@ -25,22 +25,14 @@ class AdminPageEditController extends BaseController {
                 PageUtil::writeJs($filename, htmlspecialchars_decode($this -> request -> getJs()));
                 PageUtil::writeController($filename, htmlspecialchars_decode($this -> request -> getController()));
 
-                redirect('/admin/pages?action=Success&name='.$page_model -> getName());
+                redirect('/admin/footer?action=Success&name='.$page_model -> getName());
             } else {
                 $this -> response -> setError($this -> request -> getErrors());
-                $this -> response -> setDto(new AdminPageEditDto($this -> request));
+                $this -> response -> setDto(new AdminFooterAddDto($this -> request));
             }
         } else {
-            $page_model = PageDao::findByPageId($this -> request -> getId());
-            $dto = new AdminPageEditDto($page_model);
-            $filename = PageUtil::generateFilename($page_model);
-            $dto -> setContent(htmlspecialchars(PageUtil::getHtml($filename)));
-            $dto -> setCss(htmlspecialchars(PageUtil::getCss($filename)));
-            $dto -> setJs(htmlspecialchars(PageUtil::getJs($filename)));
-            $dto -> setController(htmlspecialchars(PageUtil::getController($filename)));
-            $this -> response -> setDto($dto);
+            $this -> response -> setDto(new AdminFooterAddDto());
         }
-
     }
 
 }

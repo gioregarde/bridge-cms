@@ -1,6 +1,6 @@
 <?php
 
-class AdminPageEditController extends BaseController {
+class AdminHeaderEditController extends BaseController {
 
     function __construct($path) {
         parent::__construct($path);
@@ -15,7 +15,7 @@ class AdminPageEditController extends BaseController {
             if ($this -> request -> valid()) {
                 $page_model = new PageModel();
                 ObjectUtil::copy($this -> request, $page_model);
-                $page_model -> setPageTypeId(1);
+                $page_model -> setPageTypeId(2);
                 $page_model -> setEnabled(1);
                 PageDao::update($page_model);
 
@@ -25,14 +25,14 @@ class AdminPageEditController extends BaseController {
                 PageUtil::writeJs($filename, htmlspecialchars_decode($this -> request -> getJs()));
                 PageUtil::writeController($filename, htmlspecialchars_decode($this -> request -> getController()));
 
-                redirect('/admin/pages?action=Success&name='.$page_model -> getName());
+                redirect('/admin/header?action=Success&name='.$page_model -> getName());
             } else {
                 $this -> response -> setError($this -> request -> getErrors());
-                $this -> response -> setDto(new AdminPageEditDto($this -> request));
+                $this -> response -> setDto(new AdminHeaderEditDto($this -> request));
             }
         } else {
             $page_model = PageDao::findByPageId($this -> request -> getId());
-            $dto = new AdminPageEditDto($page_model);
+            $dto = new AdminHeaderEditDto($page_model);
             $filename = PageUtil::generateFilename($page_model);
             $dto -> setContent(htmlspecialchars(PageUtil::getHtml($filename)));
             $dto -> setCss(htmlspecialchars(PageUtil::getCss($filename)));

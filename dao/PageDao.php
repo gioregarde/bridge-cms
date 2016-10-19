@@ -6,9 +6,9 @@ class PageDao extends BaseDao {
         return parent::findAll('PAGE', 'PageModel');
     }
 
-    static function findAllByPageType() {
+    static function findAllByPageType($page_type_id) {
         $statement = "SELECT * FROM PAGE WHERE PAGE_TYPE_ID = ?";
-        $result = parent::select($statement, array(1));
+        $result = parent::select($statement, array($page_type_id));
         $page_model_array = array();
         foreach ($result as $item) {
             array_push($page_model_array, new PageModel($item));
