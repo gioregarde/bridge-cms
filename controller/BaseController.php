@@ -34,9 +34,6 @@ class BaseController {
         // common logic
         if (get_class($this) == 'BaseController') {
             $page_model = PageDao::findByUrl(ltrim($_SERVER['REQUEST_URI'], Properties::PATH_DIV));
-            if ($page_model -> getId()) {
-                $this -> filename = PageUtil::generateFilename($page_model);
-            }
         }
     }
 

@@ -1,15 +1,11 @@
 <?php
 
-class PageTypeModel extends BaseModel {
+class ContentTypeModel extends BaseModel {
 
-    private $name;
+    protected $name;
 
     function __construct($par = null) {
         parent::__construct($par);
-        if (is_array($par)) {
-            $this -> name = $par['name'];
-
-        }
     }
 
     function setName($par) {

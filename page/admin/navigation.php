@@ -24,7 +24,7 @@
             </tr>
             <?php foreach ($dto_array as $dto) { ?>
                 <tr>
-                    <td><input type="checkbox" name="page_id[]" value="<?php echo $dto -> getId(); ?>"/></td>
+                    <td><input type="checkbox" name="id[]" value="<?php echo $dto -> getId(); ?>"/></td>
                     <td><?php echo $dto -> getId(); ?></td>
                     <td><a href="/admin/navigation/edit?id=<?php echo $dto -> getId(); ?>"><?php echo $dto -> getName(); ?></a></td>
                     <td><?php echo $dto -> getEnabled(); ?></td>

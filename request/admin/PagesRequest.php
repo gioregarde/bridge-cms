@@ -3,7 +3,7 @@
 class AdminPagesRequest extends BaseRequest {
 
     protected $name;
-    protected $page_id;
+    protected $id;
 
     function __construct() {
         parent::__construct();
@@ -17,16 +17,16 @@ class AdminPagesRequest extends BaseRequest {
         return $this -> name;
     }
 
-    function setPageId($par) {
-        $this -> page_id = $par;
+    function setId($par) {
+        $this -> id = $par;
     }
 
-    function getPageId() {
-        return $this -> page_id;
+    function getId() {
+        return $this -> id;
     }
 
     function valid() {
-        if (!$this -> page_id) {
+        if (!$this -> id) {
             parent::addError('Please select one to delete');
         }
         return !parent::hasErrors();

@@ -14,7 +14,9 @@ class BaseRequest {
                 }
                 $this -> $key = $param_array;
             } else {
-                $this -> $key = htmlspecialchars($param);
+                if ($param) {
+                    $this -> $key = htmlspecialchars($param);
+                }
             }
         }
     }

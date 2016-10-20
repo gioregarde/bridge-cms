@@ -2,7 +2,7 @@
 
 class AdminNavigationDto extends BaseDto {
 
-    protected $page_type_id;
+    protected $content_type_id;
     protected $name;
     protected $enabled;
     protected $datetime;
@@ -11,12 +11,12 @@ class AdminNavigationDto extends BaseDto {
         parent::__construct($model);
     }
 
-    function setPageTypeId($par) {
-        $this -> page_type_id = $par;
+    function setContentTypeId($par) {
+        $this -> content_type_id = $par;
     }
 
-    function getPageTypeId() {
-        return $this -> page_type_id;
+    function getContentTypeId() {
+        return $this -> content_type_id;
     }
 
     function setName($par) {

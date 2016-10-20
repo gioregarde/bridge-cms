@@ -1,6 +1,6 @@
 <?php
 
-class AdminNavigationAddController extends BaseController {
+class AdminContentEditController extends BaseController {
 
     function __construct($path) {
         parent::__construct($path);
@@ -11,14 +11,14 @@ class AdminNavigationAddController extends BaseController {
         parent::action();
         authenticateForward();
 
-        if ($this -> request -> getAction() == 'Add') {
+        if ($this -> request -> getAction() == 'Update') {
             if ($this -> request -> valid()) {
                 $model = new ContentModel();
                 ObjectUtil::copy($this -> request, $model);
-                $model -> setContentTypeId(4);
+                $model -> setContentTypeId(3);
                 $model -> setEnabled(1);
                 $model -> setUserId(1);
-                ContentDao::insert($model);
+                ContentDao::update($model);
 
                 $filename = PageUtil::generateFilename($model);
                 PageUtil::writeHtml($filename, htmlspecialchars_decode($this -> request -> getContent()));
@@ -26,13 +26,20 @@ class AdminNavigationAddController extends BaseController {
                 PageUtil::writeJs($filename, htmlspecialchars_decode($this -> request -> getJs()));
                 PageUtil::writeController($filename, htmlspecialchars_decode($this -> request -> getController()));
 
-                redirect('/admin/navigation?action=Success&name='.$model -> getName());
+                redirect('/admin/content?action=Success&name='.$model -> getName());
             } else {
                 $this -> response -> setError($this -> request -> getErrors());
-                $this -> response -> setDto(new AdminNavigationAddDto($this -> request));
+                $this -> response -> setDto(new AdminContentEditDto($this -> request));
             }
         } else {
-            $this -> response -> setDto(new AdminNavigationAddDto());
+            $model = ContentDao::findById($this -> request -> getId());
+            $dto = new AdminContentEditDto($model);
+            $filename = PageUtil::generateFilename($model);
+            $dto -> setContent(htmlspecialchars(PageUtil::getHtml($filename)));
+            $dto -> setCss(htmlspecialchars(PageUtil::getCss($filename)));
+            $dto -> setJs(htmlspecialchars(PageUtil::getJs($filename)));
+            $dto -> setController(htmlspecialchars(PageUtil::getController($filename)));
+            $this -> response -> setDto($dto);
         }
 
     }

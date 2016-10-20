@@ -2,29 +2,14 @@
 
 class PageModel extends BaseModel {
 
-    private $page_type_id;
-    private $name;
-    private $url;
-    private $enabled;
-    private $datetime;
+    protected $name;
+    protected $url;
+    protected $enabled;
+    protected $datetime;
+    protected $user_id;
 
     function __construct($par = null) {
         parent::__construct($par);
-        if (is_array($par)) {
-            $this -> page_type_id = $par['page_type_id'];
-            $this -> name = $par['name'];
-            $this -> url = $par['url'];
-            $this -> enabled = $par['enabled'];
-            $this -> datetime = $par['datetime'];
-        }
-    }
-
-    function setPageTypeId($par) {
-        $this -> page_type_id = $par;
-    }
-
-    function getPageTypeId() {
-        return $this -> page_type_id;
     }
 
     function setName($par) {
@@ -57,6 +42,14 @@ class PageModel extends BaseModel {
 
     function getDatetime() {
         return $this -> datetime;
+    }
+
+    function setUserId($par) {
+        $this -> user_id = $par;
+    }
+
+    function getUserId() {
+        return $this -> user_id;
     }
 
 }

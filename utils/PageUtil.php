@@ -83,8 +83,8 @@ class PageUtil {
         }
     }
 
-    static function generateFilename($page_model) {
-        return $page_model -> getPageTypeId().self::FILENAME_DIV.$page_model -> getId().self::FILENAME_EXT;
+    static function generateFilename($model) {
+        return $model -> getContentTypeId().self::FILENAME_DIV.$model -> getId().self::FILENAME_EXT;
     }
 
 }

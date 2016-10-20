@@ -6,17 +6,7 @@ class PageDao extends BaseDao {
         return parent::findAll('PAGE', 'PageModel');
     }
 
-    static function findAllByPageType($page_type_id) {
-        $statement = "SELECT * FROM PAGE WHERE PAGE_TYPE_ID = ?";
-        $result = parent::select($statement, array($page_type_id));
-        $page_model_array = array();
-        foreach ($result as $item) {
-            array_push($page_model_array, new PageModel($item));
-        }
-        return $page_model_array;
-    }
-
-    static function findByPageId($page_id) {
+    static function findById($page_id) {
         $statement = "SELECT * FROM PAGE WHERE ID = ?";
         return new PageModel(parent::selectOne($statement, array($page_id)));
     }
@@ -28,8 +18,8 @@ class PageDao extends BaseDao {
     
 
     static function insert($page_model) {
-        $statement = "INSERT PAGE (PAGE_TYPE_ID, NAME, URL, ENABLED) VALUES (?, ?, ?, ?)";
-        $page_model -> setId(parent::insert($statement, array($page_model -> getPageTypeId(), $page_model -> getName(), $page_model -> getUrl(), $page_model -> getEnabled())));
+        $statement = "INSERT PAGE (NAME, URL, ENABLED, USER_ID) VALUES (?, ?, ?, ?)";
+        $page_model -> setId(parent::insert($statement, array($page_model -> getName(), $page_model -> getUrl(), $page_model -> getEnabled(), $page_model -> getUserId())));
     }
 
     static function update($page_model) {

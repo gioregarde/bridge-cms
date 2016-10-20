@@ -9,6 +9,13 @@ class AdminPageEditRequest extends BaseRequest {
     protected $css;
     protected $js;
     protected $controller;
+    protected $header = null;
+    protected $navigation = null;
+    protected $footer = null;
+
+    protected $headerOld = null;
+    protected $navigationOld = null;
+    protected $footerOld = null;
 
     function __construct() {
         parent::__construct();
@@ -68,6 +75,54 @@ class AdminPageEditRequest extends BaseRequest {
 
     function getController() {
         return $this -> controller;
+    }
+
+    function setHeader($par) {
+        $this -> header = $par;
+    }
+
+    function getHeader() {
+        return $this -> header;
+    }
+
+    function setNavigation($par) {
+        $this -> navigation = $par;
+    }
+
+    function getNavigation() {
+        return $this -> navigation;
+    }
+
+    function setFooter($par) {
+        $this -> footer = $par;
+    }
+
+    function getFooter() {
+        return $this -> footer;
+    }
+
+    function setHeaderOld($par) {
+        $this -> headerOld = $par;
+    }
+
+    function getHeaderOld() {
+        return $this -> headerOld;
+    }
+
+    function setNavigationOld($par) {
+        $this -> navigationOld = $par;
+    }
+
+    function getNavigationOld() {
+        return $this -> navigationOld;
+    }
+
+    function setFooterOld($par) {
+        $this -> footerOld = $par;
+    }
+
+    function getFooterOld() {
+        return $this -> footerOld;
     }
 
     function valid() {

@@ -19,32 +19,17 @@ class AdminPagesController extends BaseController {
             }
         } elseif ($this -> request -> getAction() == 'Delete') {
             if ($this -> request -> valid()) {
-                $count = PageDao::delete($this -> request -> getPageId());
-                if ($count > 0) {
-                    $this -> response -> addNotification('Delete successful.');
-
-                    foreach ($this -> request -> getPageId() as $page_id) {
-                        $page_model = new PageModel();
-                        $page_model -> setId($page_id);
-                        $page_model -> setPageTypeId(1);
-
-                        $filename = PageUtil::generateFilename($page_model);
-                        PageUtil::deleteHtml($filename);
-                        PageUtil::deleteCss($filename);
-                        PageUtil::deleteJs($filename);
-                        PageUtil::deleteController($filename);
-                        
-                    }
-                }
+                PageContentDao::deleteByPageId($this -> request -> getId());
+                PageDao::delete($this -> request -> getId());
             } else {
                 $this -> response -> setError($this -> request -> getErrors());
             }
         }
 
         $dto_array = array();
-        $page_model_array = PageDao::findAllByPageType(1);
-        foreach ($page_model_array as $page_model) {
-            array_push($dto_array, new AdminPagesDto($page_model));
+        $model_array = PageDao::findAll();
+        foreach ($model_array as $model) {
+            array_push($dto_array, new AdminPagesDto($model));
         }
         $this -> response -> setDtoArray($dto_array);
     }

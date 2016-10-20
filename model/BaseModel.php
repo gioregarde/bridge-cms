@@ -6,7 +6,9 @@ class BaseModel {
 
     function __construct($par = null) {
         if (is_array($par)) {
-            $this -> id = $par['id'];
+            foreach ($par as $key => $param ) {
+                $this -> $key = $param;
+            }
         }
     }
 

@@ -4,10 +4,13 @@ class AdminPageAddDto extends BaseDto {
 
     protected $name;
     protected $url;
-    protected $content;
-    protected $css;
-    protected $js;
-    protected $controller;
+    protected $header;
+    protected $navigation;
+    protected $footer;
+
+    protected $header_array;
+    protected $navigation_array;
+    protected $footer_array;
 
     function __construct($model = null) {
         parent::__construct($model);
@@ -30,36 +33,52 @@ class AdminPageAddDto extends BaseDto {
         return $this -> url;
     }
 
-    function setContent($par) {
-        $this -> content = $par;
+    function setHeaderId($par) {
+        $this -> header = $par;
     }
 
-    function getContent() {
-        return $this -> content;
+    function getHeaderId() {
+        return $this -> header;
     }
 
-    function setCss($par) {
-        $this -> css = $par;
+    function setNavigationId($par) {
+        $this -> navigation = $par;
     }
 
-    function getCss() {
-        return $this -> css;
+    function getNavigationId() {
+        return $this -> navigation;
     }
 
-    function setJs($par) {
-        $this -> js = $par;
+    function setFooterId($par) {
+        $this -> footer = $par;
     }
 
-    function getJs() {
-        return $this -> js;
+    function getFooterId() {
+        return $this -> footer;
     }
 
-    function setController($par) {
-        $this -> controller = $par;
+    function setHeaderArray($par) {
+        $this -> header_array = $par;
     }
 
-    function getController() {
-        return $this -> controller;
+    function getHeaderArray() {
+        return $this -> header_array;
+    }
+
+    function setNavigationArray($par) {
+        $this -> navigation_array = $par;
+    }
+
+    function getNavigationArray() {
+        return $this -> navigation_array;
+    }
+
+    function setFooterArray($par) {
+        $this -> footer_array = $par;
+    }
+
+    function getFooterArray() {
+        return $this -> footer_array;
     }
 
 }

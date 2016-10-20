@@ -1,14 +1,15 @@
 <?php
 
-class AdminHeaderDto extends BaseDto {
+class ContentModel extends BaseModel {
 
     protected $content_type_id;
     protected $name;
     protected $enabled;
     protected $datetime;
+    protected $user_id;
 
-    function __construct($model = null) {
-        parent::__construct($model);
+    function __construct($par = null) {
+        parent::__construct($par);
     }
 
     function setContentTypeId($par) {
@@ -19,7 +20,7 @@ class AdminHeaderDto extends BaseDto {
         return $this -> content_type_id;
     }
 
-    function setName($par) {
+     function setName($par) {
         $this -> name = $par;
     }
 
@@ -43,7 +44,14 @@ class AdminHeaderDto extends BaseDto {
         return $this -> datetime;
     }
 
+    function setUserId($par) {
+        $this -> user_id = $par;
+    }
+
+    function getUserId() {
+        return $this -> user_id;
+    }
+
 }
 
 ?>
-

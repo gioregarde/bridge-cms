@@ -1,6 +1,6 @@
 <?php
 
-class AdminNavigationController extends BaseController {
+class AdminContentController extends BaseController {
 
     function __construct($path) {
         parent::__construct($path);
@@ -12,9 +12,9 @@ class AdminNavigationController extends BaseController {
         authenticateForward();
 
         if ($this -> request -> getAction() == 'Success') {
-            if (strpos($_SERVER['HTTP_REFERER'], '/admin/navigation/add') !== false) {
+            if (strpos($_SERVER['HTTP_REFERER'], '/admin/content/add') !== false) {
                 $this -> response -> addNotification($this -> request -> getName().' is created.');
-            } elseif (strpos($_SERVER['HTTP_REFERER'], '/admin/navigation/edit') !== false) {
+            } elseif (strpos($_SERVER['HTTP_REFERER'], '/admin/content/edit') !== false) {
                 $this -> response -> addNotification($this -> request -> getName().' is updated.');
             }
         } elseif ($this -> request -> getAction() == 'Delete') {
@@ -26,7 +26,7 @@ class AdminNavigationController extends BaseController {
                     foreach ($this -> request -> getId() as $id) {
                         $model = new ContentModel();
                         $model -> setId($id);
-                        $model -> setContentTypeId(4);
+                        $model -> setContentTypeId(1);
 
                         $filename = PageUtil::generateFilename($model);
                         PageUtil::deleteHtml($filename);
@@ -42,12 +42,11 @@ class AdminNavigationController extends BaseController {
         }
 
         $dto_array = array();
-        $model_array = ContentDao::findAllByContentType(4);
+        $model_array = ContentDao::findAllByContentType(1);
         foreach ($model_array as $model) {
-            array_push($dto_array, new AdminNavigationDto($model));
+            array_push($dto_array, new AdminContentDto($model));
         }
         $this -> response -> setDtoArray($dto_array);
-
     }
 
 }

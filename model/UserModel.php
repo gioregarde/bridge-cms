@@ -2,21 +2,14 @@
 
 class UserModel extends BaseModel {
 
-    private $username;
-    private $password;
-    private $enabled;
-    private $hits;
-    private $datetime;
+    protected $username;
+    protected $password;
+    protected $enabled;
+    protected $hits;
+    protected $datetime;
 
     function __construct($par = null) {
         parent::__construct($par);
-        if (is_array($par)) {
-            $this -> username = $par['username'];
-            $this -> password = $par['password'];
-            $this -> enabled = $par['enabled'];
-            $this -> hits = $par['hits'];
-            $this -> datetime = $par['datetime'];
-        }
     }
 
     function setUsername($par) {

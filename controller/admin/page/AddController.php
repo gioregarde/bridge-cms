@@ -11,28 +11,61 @@ class AdminPageAddController extends BaseController {
         parent::action();
         authenticateForward();
 
+        $dto = new AdminPageAddDto();
+
         if ($this -> request -> getAction() == 'Add') {
             if ($this -> request -> valid()) {
                 $page_model = new PageModel();
                 ObjectUtil::copy($this -> request, $page_model);
-                $page_model -> setPageTypeId(1);
                 $page_model -> setEnabled(1);
+                $page_model -> setUserId(1);
                 PageDao::insert($page_model);
 
-                $filename = PageUtil::generateFilename($page_model);
-                PageUtil::writeHtml($filename, htmlspecialchars_decode($this -> request -> getContent()));
-                PageUtil::writeCss($filename, htmlspecialchars_decode($this -> request -> getCss()));
-                PageUtil::writeJs($filename, htmlspecialchars_decode($this -> request -> getJs()));
-                PageUtil::writeController($filename, htmlspecialchars_decode($this -> request -> getController()));
+                $page_content_model = new PageContentModel();
+                $page_content_model -> setPageId($page_model -> getId());
+
+                if ($this -> request -> getHeader()) {
+                    $page_content_model -> setContentId($this -> request -> getHeader());
+                    PageContentDao::insert($page_content_model);
+                }
+                if ($this -> request -> getNavigation()) {
+                    $page_content_model -> setContentId($this -> request -> getNavigation());
+                    PageContentDao::insert($page_content_model);
+                }
+                if ($this -> request -> getFooter()) {
+                    $page_content_model -> setContentId($this -> request -> getFooter());
+                    PageContentDao::insert($page_content_model);
+                }
 
                 redirect('/admin/pages?action=Success&name='.$page_model -> getName());
             } else {
                 $this -> response -> setError($this -> request -> getErrors());
-                $this -> response -> setDto(new AdminPageAddDto($this -> request));
+                $dto = new AdminPageAddDto($this -> request);
             }
-        } else {
-            $this -> response -> setDto(new AdminPageAddDto());
         }
+
+        $array = array();
+        $model_array = ContentDao::findAllByContentType(2);
+        foreach ($model_array as $model) {
+            array_push($array, array('id' => $model -> getId(), 'name' => $model -> getName()));
+        }
+        $dto -> setHeaderArray($array);
+
+        $array = array();
+        $model_array = ContentDao::findAllByContentType(4);
+        foreach ($model_array as $model) {
+            array_push($array, array('id' => $model -> getId(), 'name' => $model -> getName()));
+        }
+        $dto -> setNavigationArray($array);
+
+        $array = array();
+        $model_array = ContentDao::findAllByContentType(3);
+        foreach ($model_array as $model) {
+            array_push($array, array('id' => $model -> getId(), 'name' => $model -> getName()));
+        }
+        $dto -> setFooterArray($array);
+
+        $this -> response -> setDto($dto);
 
     }
 

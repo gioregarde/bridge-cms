@@ -1,6 +1,6 @@
 <?php
 
-class AdminNavigationAddController extends BaseController {
+class AdminContentAddController extends BaseController {
 
     function __construct($path) {
         parent::__construct($path);
@@ -11,11 +11,13 @@ class AdminNavigationAddController extends BaseController {
         parent::action();
         authenticateForward();
 
+        $dto = new AdminPageAddDto();
+
         if ($this -> request -> getAction() == 'Add') {
             if ($this -> request -> valid()) {
                 $model = new ContentModel();
                 ObjectUtil::copy($this -> request, $model);
-                $model -> setContentTypeId(4);
+                $model -> setContentTypeId(1);
                 $model -> setEnabled(1);
                 $model -> setUserId(1);
                 ContentDao::insert($model);
@@ -26,14 +28,14 @@ class AdminNavigationAddController extends BaseController {
                 PageUtil::writeJs($filename, htmlspecialchars_decode($this -> request -> getJs()));
                 PageUtil::writeController($filename, htmlspecialchars_decode($this -> request -> getController()));
 
-                redirect('/admin/navigation?action=Success&name='.$model -> getName());
+                redirect('/admin/content?action=Success&name='.$model -> getName());
             } else {
                 $this -> response -> setError($this -> request -> getErrors());
-                $this -> response -> setDto(new AdminNavigationAddDto($this -> request));
+                $dto = new AdminContentAddDto($this -> request);
             }
-        } else {
-            $this -> response -> setDto(new AdminNavigationAddDto());
         }
+
+        $this -> response -> setDto($dto);
 
     }
 

@@ -4,10 +4,9 @@ class AdminPageAddRequest extends BaseRequest {
 
     protected $name;
     protected $url;
-    protected $content;
-    protected $css;
-    protected $js;
-    protected $controller;
+    protected $header = null;
+    protected $navigation = null;
+    protected $footer = null;
 
     function __construct() {
         parent::__construct();
@@ -29,36 +28,28 @@ class AdminPageAddRequest extends BaseRequest {
         return $this -> url;
     }
 
-    function setContent($par) {
-        $this -> content = $par;
+    function setHeader($par) {
+        $this -> header = $par;
     }
 
-    function getContent() {
-        return $this -> content;
+    function getHeader() {
+        return $this -> header;
     }
 
-    function setCss($par) {
-        $this -> css = $par;
+    function setNavigation($par) {
+        $this -> navigation = $par;
     }
 
-    function getCss() {
-        return $this -> css;
+    function getNavigation() {
+        return $this -> navigation;
     }
 
-    function setJs($par) {
-        $this -> js = $par;
+    function setFooter($par) {
+        $this -> footer = $par;
     }
 
-    function getJs() {
-        return $this -> js;
-    }
-
-    function setController($par) {
-        $this -> controller = $par;
-    }
-
-    function getController() {
-        return $this -> controller;
+    function getFooter() {
+        return $this -> footer;
     }
 
     function valid() {

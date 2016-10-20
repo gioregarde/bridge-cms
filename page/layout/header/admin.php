@@ -4,16 +4,19 @@
         <a href="/admin/site">Site</a>
     </li>
     <li>
-        <a href="/admin/pages">Pages</a>
+        <a href="/admin/content">Content</a>
     </li>
     <li>
         <a href="/admin/header">Header</a>
     </li>
     <li>
+        <a href="/admin/navigation">Navigation</a>
+    </li>
+    <li>
         <a href="/admin/footer">Footer</a>
     </li>
     <li>
-        <a href="/admin/navigation">Navigation</a>
+        <a href="/admin/pages">Pages</a>
     </li>
 </ul>
 <div class="settings">

@@ -128,7 +128,8 @@ content form div.table-list {
     padding-top: 10px;
 }
 content form label.field-text span,
-content form label.field-ace > span {
+content form label.field-ace > span,
+content form label.field-radio span {
     width: 25%;
     display: inline-block;
 }

@@ -1,18 +1,22 @@
 <?php
 
-class GroupModel extends BaseModel {
+class AdminContentDto extends BaseDto {
 
-    private $name;
-    private $enabled;
-    private $datetime;
+    protected $content_type_id;
+    protected $name;
+    protected $enabled;
+    protected $datetime;
 
-    function __construct($par = null) {
-        parent::__construct($par);
-        if (is_array($par)) {
-            $this -> name = $par['name'];
-            $this -> enabled = $par['enabled'];
-            $this -> datetime = $par['datetime'];
-        }
+    function __construct($model = null) {
+        parent::__construct($model);
+    }
+
+    function setContetTypeId($par) {
+        $this -> content_type_id = $par;
+    }
+
+    function getContetTypeId() {
+        return $this -> content_type_id;
     }
 
     function setName($par) {
@@ -42,3 +46,4 @@ class GroupModel extends BaseModel {
 }
 
 ?>
+

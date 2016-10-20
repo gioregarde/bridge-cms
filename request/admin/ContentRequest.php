@@ -1,6 +1,6 @@
 <?php
 
-class AdminFooterRequest extends BaseRequest {
+class AdminContentRequest extends BaseRequest {
 
     protected $name;
     protected $id;

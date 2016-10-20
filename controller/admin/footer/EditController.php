@@ -13,27 +13,28 @@ class AdminFooterEditController extends BaseController {
 
         if ($this -> request -> getAction() == 'Update') {
             if ($this -> request -> valid()) {
-                $page_model = new PageModel();
-                ObjectUtil::copy($this -> request, $page_model);
-                $page_model -> setPageTypeId(3);
-                $page_model -> setEnabled(1);
-                PageDao::update($page_model);
+                $model = new ContentModel();
+                ObjectUtil::copy($this -> request, $model);
+                $model -> setContentTypeId(3);
+                $model -> setEnabled(1);
+                $model -> setUserId(1);
+                ContentDao::update($model);
 
-                $filename = PageUtil::generateFilename($page_model);
+                $filename = PageUtil::generateFilename($model);
                 PageUtil::writeHtml($filename, htmlspecialchars_decode($this -> request -> getContent()));
                 PageUtil::writeCss($filename, htmlspecialchars_decode($this -> request -> getCss()));
                 PageUtil::writeJs($filename, htmlspecialchars_decode($this -> request -> getJs()));
                 PageUtil::writeController($filename, htmlspecialchars_decode($this -> request -> getController()));
 
-                redirect('/admin/footer?action=Success&name='.$page_model -> getName());
+                redirect('/admin/footer?action=Success&name='.$model -> getName());
             } else {
                 $this -> response -> setError($this -> request -> getErrors());
                 $this -> response -> setDto(new AdminFooterEditDto($this -> request));
             }
         } else {
-            $page_model = PageDao::findByPageId($this -> request -> getId());
-            $dto = new AdminFooterEditDto($page_model);
-            $filename = PageUtil::generateFilename($page_model);
+            $model = ContentDao::findById($this -> request -> getId());
+            $dto = new AdminFooterEditDto($model);
+            $filename = PageUtil::generateFilename($model);
             $dto -> setContent(htmlspecialchars(PageUtil::getHtml($filename)));
             $dto -> setCss(htmlspecialchars(PageUtil::getCss($filename)));
             $dto -> setJs(htmlspecialchars(PageUtil::getJs($filename)));

@@ -2,7 +2,6 @@
 
 class AdminPagesDto extends BaseDto {
 
-    protected $page_type_id;
     protected $name;
     protected $url;
     protected $enabled;
@@ -10,14 +9,6 @@ class AdminPagesDto extends BaseDto {
 
     function __construct($model = null) {
         parent::__construct($model);
-    }
-
-    function setPageTypeId($par) {
-        $this -> page_type_id = $par;
-    }
-
-    function getPageTypeId() {
-        return $this -> page_type_id;
     }
 
     function setName($par) {

@@ -19,16 +19,16 @@ class AdminHeaderController extends BaseController {
             }
         } elseif ($this -> request -> getAction() == 'Delete') {
             if ($this -> request -> valid()) {
-                $count = PageDao::delete($this -> request -> getPageId());
+                $count = ContentDao::delete($this -> request -> getId());
                 if ($count > 0) {
                     $this -> response -> addNotification('Delete successful.');
 
-                    foreach ($this -> request -> getPageId() as $page_id) {
-                        $page_model = new PageModel();
-                        $page_model -> setId($page_id);
-                        $page_model -> setPageTypeId(2);
+                    foreach ($this -> request -> getId() as $id) {
+                        $model = new ContentModel();
+                        $model -> setId($id);
+                        $model -> setContentTypeId(2);
 
-                        $filename = PageUtil::generateFilename($page_model);
+                        $filename = PageUtil::generateFilename($model);
                         PageUtil::deleteHtml($filename);
                         PageUtil::deleteCss($filename);
                         PageUtil::deleteJs($filename);
@@ -42,9 +42,9 @@ class AdminHeaderController extends BaseController {
         }
 
         $dto_array = array();
-        $page_model_array = PageDao::findAllByPageType(2);
-        foreach ($page_model_array as $page_model) {
-            array_push($dto_array, new AdminHeaderDto($page_model));
+        $model_array = ContentDao::findAllByContentType(2);
+        foreach ($model_array as $model) {
+            array_push($dto_array, new AdminHeaderDto($model));
         }
         $this -> response -> setDtoArray($dto_array);
 
