@@ -15,7 +15,7 @@ class AdminNavigationAddController extends BaseController {
             if ($this -> request -> valid()) {
                 $model = new ContentModel();
                 ObjectUtil::copy($this -> request, $model);
-                $model -> setContentTypeId(4);
+                $model -> setContentTypeId(3);
                 $model -> setEnabled(1);
                 $model -> setUserId(1);
                 ContentDao::insert($model);

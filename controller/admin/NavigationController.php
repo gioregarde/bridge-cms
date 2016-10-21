@@ -26,7 +26,7 @@ class AdminNavigationController extends BaseController {
                     foreach ($this -> request -> getId() as $id) {
                         $model = new ContentModel();
                         $model -> setId($id);
-                        $model -> setContentTypeId(4);
+                        $model -> setContentTypeId(3);
 
                         $filename = PageUtil::generateFilename($model);
                         PageUtil::deleteHtml($filename);
@@ -42,7 +42,7 @@ class AdminNavigationController extends BaseController {
         }
 
         $dto_array = array();
-        $model_array = ContentDao::findAllByContentType(4);
+        $model_array = ContentDao::findAllByContentType(3);
         foreach ($model_array as $model) {
             array_push($dto_array, new AdminNavigationDto($model));
         }

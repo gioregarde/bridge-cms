@@ -7,6 +7,7 @@ class PageModel extends BaseModel {
     protected $enabled;
     protected $datetime;
     protected $user_id;
+    protected $layout_id;
 
     function __construct($par = null) {
         parent::__construct($par);
@@ -50,6 +51,14 @@ class PageModel extends BaseModel {
 
     function getUserId() {
         return $this -> user_id;
+    }
+
+    function setLayoutId($par) {
+        $this -> layout_id = $par;
+    }
+
+    function getLayoutId() {
+        return $this -> layout_id;
     }
 
 }

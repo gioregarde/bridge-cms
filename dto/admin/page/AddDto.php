@@ -33,27 +33,27 @@ class AdminPageAddDto extends BaseDto {
         return $this -> url;
     }
 
-    function setHeaderId($par) {
+    function setHeader($par) {
         $this -> header = $par;
     }
 
-    function getHeaderId() {
+    function getHeader() {
         return $this -> header;
     }
 
-    function setNavigationId($par) {
+    function setNavigation($par) {
         $this -> navigation = $par;
     }
 
-    function getNavigationId() {
+    function getNavigation() {
         return $this -> navigation;
     }
 
-    function setFooterId($par) {
+    function setFooter($par) {
         $this -> footer = $par;
     }
 
-    function getFooterId() {
+    function getFooter() {
         return $this -> footer;
     }
 

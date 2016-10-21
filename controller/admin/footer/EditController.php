@@ -15,7 +15,7 @@ class AdminFooterEditController extends BaseController {
             if ($this -> request -> valid()) {
                 $model = new ContentModel();
                 ObjectUtil::copy($this -> request, $model);
-                $model -> setContentTypeId(3);
+                $model -> setContentTypeId(4);
                 $model -> setEnabled(1);
                 $model -> setUserId(1);
                 ContentDao::update($model);
