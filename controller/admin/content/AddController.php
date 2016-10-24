@@ -11,8 +11,6 @@ class AdminContentAddController extends BaseController {
         parent::action();
         authenticateForward();
 
-        $dto = new AdminPageAddDto();
-
         if ($this -> request -> getAction() == 'Add') {
             if ($this -> request -> valid()) {
                 $model = new ContentModel();
@@ -23,7 +21,7 @@ class AdminContentAddController extends BaseController {
                 ContentDao::insert($model);
 
                 $filename = PageUtil::generateFilename($model);
-                PageUtil::writeHtml($filename, htmlspecialchars_decode($this -> request -> getContent()));
+                PageUtil::writeView($filename, htmlspecialchars_decode($this -> request -> getContent()));
                 PageUtil::writeCss($filename, htmlspecialchars_decode($this -> request -> getCss()));
                 PageUtil::writeJs($filename, htmlspecialchars_decode($this -> request -> getJs()));
                 PageUtil::writeController($filename, htmlspecialchars_decode($this -> request -> getController()));
@@ -33,9 +31,9 @@ class AdminContentAddController extends BaseController {
                 $this -> response -> setError($this -> request -> getErrors());
                 $dto = new AdminContentAddDto($this -> request);
             }
+        } else {
+            $this -> response -> setDto(new AdminContentAddDto());
         }
-
-        $this -> response -> setDto($dto);
 
     }
 

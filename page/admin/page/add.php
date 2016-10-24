@@ -12,7 +12,7 @@
     </label>
     <label class="field-text">
         <span>URL</span>
-        <input type="text" name="url"/>
+        <input type="text" name="url" value="<?php echo $dto -> getUrl(); ?>"/>
     </label>
     <label class="field-radio">
         <span>Header</span>

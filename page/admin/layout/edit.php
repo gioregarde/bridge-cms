@@ -1,4 +1,5 @@
-<form action="/admin/layout/add" method="post">
+<form action="/admin/layout/edit" method="post">
+    <input type="hidden" name="id" value="<?php echo $dto -> getId(); ?>"/>
     <?php if ($response -> hasErrors()) { ?>
         <label>
             <?php foreach ($response -> getErrors() as $error) { ?>
@@ -21,6 +22,6 @@
         <textarea class="script-textarea" name="layout"></textarea>
     </label>
     <label>
-        <input type="submit" name="action" value="Add">
+        <input type="submit" name="action" value="Update">
     </label>
 </form>

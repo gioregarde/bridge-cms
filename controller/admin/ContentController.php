@@ -29,7 +29,7 @@ class AdminContentController extends BaseController {
                         $model -> setContentTypeId(1);
 
                         $filename = PageUtil::generateFilename($model);
-                        PageUtil::deleteHtml($filename);
+                        PageUtil::deleteView($filename);
                         PageUtil::deleteCss($filename);
                         PageUtil::deleteJs($filename);
                         PageUtil::deleteController($filename);

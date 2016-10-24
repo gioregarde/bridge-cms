@@ -21,7 +21,7 @@ class AdminHeaderEditController extends BaseController {
                 ContentDao::update($model);
 
                 $filename = PageUtil::generateFilename($model);
-                PageUtil::writeHtml($filename, htmlspecialchars_decode($this -> request -> getContent()));
+                PageUtil::writeView($filename, htmlspecialchars_decode($this -> request -> getContent()));
                 PageUtil::writeCss($filename, htmlspecialchars_decode($this -> request -> getCss()));
                 PageUtil::writeJs($filename, htmlspecialchars_decode($this -> request -> getJs()));
                 PageUtil::writeController($filename, htmlspecialchars_decode($this -> request -> getController()));
@@ -35,7 +35,7 @@ class AdminHeaderEditController extends BaseController {
             $model = ContentDao::findById($this -> request -> getId());
             $dto = new AdminHeaderEditDto($model);
             $filename = PageUtil::generateFilename($model);
-            $dto -> setContent(htmlspecialchars(PageUtil::getHtml($filename)));
+            $dto -> setContent(htmlspecialchars(PageUtil::getView($filename)));
             $dto -> setCss(htmlspecialchars(PageUtil::getCss($filename)));
             $dto -> setJs(htmlspecialchars(PageUtil::getJs($filename)));
             $dto -> setController(htmlspecialchars(PageUtil::getController($filename)));

@@ -1,13 +1,22 @@
 <?php
 
-class AdminLayoutAddRequest extends BaseRequest {
+class AdminLayoutEditRequest extends BaseRequest {
 
+    protected $id;
     protected $name;
     protected $css;
     protected $layout;
 
     function __construct() {
         parent::__construct();
+    }
+
+    function setId($par) {
+        $this -> id = $par;
+    }
+
+    function getId() {
+        return $this -> id;
     }
 
     function setName($par) {
@@ -40,7 +49,7 @@ class AdminLayoutAddRequest extends BaseRequest {
         if (preg_match_all('/class=\".*content.*\"/U', htmlspecialchars_decode($this -> layout)) == 0) {
             parent::addError('Error in Layout');
         }
-        return !parent::hasErrors();
+       return !parent::hasErrors();
     }
 
 }
