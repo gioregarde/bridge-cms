@@ -129,9 +129,15 @@ content form div.table-list {
 }
 content form label.field-text span,
 content form label.field-ace > span,
-content form label.field-radio span {
+content form label.field-radio span,
+content form label.field-select span,
+content form label.field-ul span {
     width: 25%;
     display: inline-block;
+}
+content form label.field-ul ul{
+    display: inline-block;
+    vertical-align: top;
 }
 content form label.field-text input,
 content form label.field-ace div.script-panel {

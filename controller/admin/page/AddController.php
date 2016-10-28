@@ -45,6 +45,14 @@ class AdminPageAddController extends BaseController {
         }
 
         $array = array();
+        $model_array = ContentDao::findAllByContentType(1);
+        print_r($model_array);
+        foreach ($model_array as $model) {
+            array_push($array, array('id' => $model -> getId(), 'name' => $model -> getName()));
+        }
+        $dto -> setContentArray($array);
+
+        $array = array();
         $model_array = ContentDao::findAllByContentType(2);
         foreach ($model_array as $model) {
             array_push($array, array('id' => $model -> getId(), 'name' => $model -> getName()));
@@ -52,18 +60,25 @@ class AdminPageAddController extends BaseController {
         $dto -> setHeaderArray($array);
 
         $array = array();
-        $model_array = ContentDao::findAllByContentType(4);
+        $model_array = ContentDao::findAllByContentType(3);
         foreach ($model_array as $model) {
             array_push($array, array('id' => $model -> getId(), 'name' => $model -> getName()));
         }
         $dto -> setNavigationArray($array);
 
         $array = array();
-        $model_array = ContentDao::findAllByContentType(3);
+        $model_array = ContentDao::findAllByContentType(4);
         foreach ($model_array as $model) {
             array_push($array, array('id' => $model -> getId(), 'name' => $model -> getName()));
         }
         $dto -> setFooterArray($array);
+
+        $array = array();
+        $model_array = LayoutDao::findAll();
+        foreach ($model_array as $model) {
+            array_push($array, array('id' => $model -> getId(), 'name' => $model -> getName(), 'section_count' => $model -> getSectionCount()));
+        }
+        $dto -> setLayoutArray($array);
 
         $this -> response -> setDto($dto);
 
