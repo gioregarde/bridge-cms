@@ -9,7 +9,7 @@ class AdminPageAddRequest extends BaseRequest {
     protected $header = null;
     protected $navigation = null;
     protected $footer = null;
-    protected $layout = null;
+    protected $layoutId = null;
 
     function __construct() {
         parent::__construct();
@@ -71,12 +71,12 @@ class AdminPageAddRequest extends BaseRequest {
         return $this -> footer;
     }
 
-    function setLayout($par) {
-        $this -> layout = $par;
+    function setLayoutId($par) {
+        $this -> layoutId = $par;
     }
 
-    function getLayout() {
-        return $this -> layout;
+    function getLayoutId() {
+        return $this -> layoutId;
     }
 
     function valid() {

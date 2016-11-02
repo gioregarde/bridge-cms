@@ -18,13 +18,13 @@ class PageDao extends BaseDao {
     
 
     static function insert($page_model) {
-        $statement = "INSERT PAGE (NAME, URL, ENABLED, USER_ID) VALUES (?, ?, ?, ?)";
-        $page_model -> setId(parent::insert($statement, array($page_model -> getName(), $page_model -> getUrl(), $page_model -> getEnabled(), $page_model -> getUserId())));
+        $statement = "INSERT PAGE (NAME, URL, LAYOUT_ID, ENABLED, USER_ID) VALUES (?, ?, ?, ?, ?)";
+        $page_model -> setId(parent::insert($statement, array($page_model -> getName(), $page_model -> getUrl(), $page_model -> getLayoutId(), $page_model -> getEnabled(), $page_model -> getUserId())));
     }
 
     static function update($page_model) {
-        $statement = "UPDATE PAGE SET NAME = ?, URL = ?, DATETIME = NOW() WHERE ID = ?";
-        return parent::update($statement, array($page_model -> getName(), $page_model -> getUrl(), $page_model -> getId()));
+        $statement = "UPDATE PAGE SET NAME = ?, URL = ?, LAYOUT_ID = ? , DATETIME = NOW() WHERE ID = ?";
+        return parent::update($statement, array($page_model -> getName(), $page_model -> getUrl(), $page_model -> getLayoutId(), $page_model -> getId()));
     }
 
     static function delete($id_array) {

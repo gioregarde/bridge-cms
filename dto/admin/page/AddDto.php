@@ -9,7 +9,7 @@ class AdminPageAddDto extends BaseDto {
     protected $header;
     protected $navigation;
     protected $footer;
-    protected $layout;
+    protected $layoutId;
 
     protected $content_array;
     protected $header_array;
@@ -77,12 +77,12 @@ class AdminPageAddDto extends BaseDto {
         return $this -> footer;
     }
 
-    function setLayout($par) {
-        $this -> layout = $par;
+    function setLayoutId($par) {
+        $this -> layoutId = $par;
     }
 
-    function getLayout() {
-        return $this -> layout;
+    function getLayoutID() {
+        return $this -> layoutId;
     }
 
     function setContentArray($par) {

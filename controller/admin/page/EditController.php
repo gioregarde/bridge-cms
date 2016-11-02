@@ -59,6 +59,47 @@ class AdminPageEditController extends BaseController {
                     PageContentDao::update($page_content_model, $this -> request -> getFooterOld());
                 }
 
+                $array_content_tmp = $this -> request -> getContent();
+                foreach ($array_content_tmp as $index => $content) {
+                    if ($content == null || $content == "") {
+                        array_splice($array_content_tmp, $index, 1);
+                    }
+                }
+                $this -> request -> setContent($array_content_tmp);
+
+                if (count($this -> request -> getContent()) > count($this -> request -> getContentOld())) {
+                    foreach ($this -> request -> getContent() as $index => $content) {
+                        $page_content_model -> setContentId($content);
+                        $page_content_model -> setSequence($index);
+                        $page_content_model -> setSectionNum($this -> request -> getSection()[$index]);
+                        if ($index < count($this -> request -> getContentOld())) {
+                            PageContentDao::update($page_content_model, $this -> request -> getContentOld()[$index]);
+                        } else {
+                            PageContentDao::insert($page_content_model);
+                        }
+                    }
+                } elseif (count($this -> request -> getContent()) < count($this -> request -> getContentOld())) {
+                    foreach ($this -> request -> getContentOld() as $index => $content) {
+                        $page_content_model -> setContentId($this -> request -> getContent()[$index]);
+                        $page_content_model -> setSequence($index);
+                        $page_content_model -> setSectionNum($this -> request -> getSection()[$index]);
+                        console($index < count($this -> request -> getContent()));
+                        if ($index < count($this -> request -> getContent())) {
+                            PageContentDao::update($page_content_model, $this -> request -> getContentOld()[$index]);
+                        } else {
+                            $page_content_model -> setContentId($content);
+                            PageContentDao::delete($page_content_model);
+                        }
+                    }
+                } else {
+                    foreach ($this -> request -> getContent() as $index => $content) {
+                        $page_content_model -> setContentId($content);
+                        $page_content_model -> setSequence($index);
+                        $page_content_model -> setSectionNum($this -> request -> getSection()[$index]);
+                        PageContentDao::update($page_content_model, $this -> request -> getContentOld()[$index]);
+                    }
+                }
+
                 redirect('/admin/pages?action=Success&name='.$page_model -> getName());
             } else {
                 $this -> response -> setError($this -> request -> getErrors());
@@ -72,10 +113,26 @@ class AdminPageEditController extends BaseController {
         }
 
         if ($page_content_array) {
+            $array_content = array();
+            $array_sention = array();
             foreach ($page_content_array as $page_content_model) {
                 array_push($content_id_array, $page_content_model -> getContentId());
+                if ($page_content_model -> getSequence() != null) {
+                    array_push($array_content, $page_content_model -> getContentId());
+                    array_push($array_sention, $page_content_model -> getSectionNum());
+                }
             }
+            $dto -> setContent($array_content);
+            $dto -> setSection($array_sention);
+            $dto -> setContentOld($array_content);
         }
+
+        $array = array();
+        $model_array = ContentDao::findAllByContentType(1);
+        foreach ($model_array as $model) {
+            array_push($array, array('id' => $model -> getId(), 'name' => $model -> getName()));
+        }
+        $dto -> setContentArray($array);
 
         $array = array();
         $model_array = ContentDao::findAllByContentType(2);
@@ -109,6 +166,13 @@ class AdminPageEditController extends BaseController {
             }
         }
         $dto -> setFooterArray($array);
+
+        $array = array();
+        $model_array = LayoutDao::findAll();
+        foreach ($model_array as $model) {
+            array_push($array, array('id' => $model -> getId(), 'name' => $model -> getName(), 'section_count' => $model -> getSectionCount()));
+        }
+        $dto -> setLayoutArray($array);
 
         $this -> response -> setDto($dto);
 

@@ -5,21 +5,23 @@ class AdminPageEditDto extends BaseDto {
     protected $id;
     protected $name;
     protected $url;
-    protected $content;
-    protected $css;
-    protected $js;
-    protected $controller;
+    protected $content = array();
+    protected $section = array();
     protected $header;
     protected $navigation;
     protected $footer;
+    protected $layoutId;
 
+    protected $contentOld = array();
     protected $headerOld = null;
     protected $navigationOld = null;
     protected $footerOld = null;
 
+    protected $content_array;
     protected $header_array;
     protected $navigation_array;
     protected $footer_array;
+    protected $layout_array;
 
     function __construct($model = null) {
         parent::__construct($model);
@@ -57,28 +59,12 @@ class AdminPageEditDto extends BaseDto {
         return $this -> content;
     }
 
-    function setCss($par) {
-        $this -> css = $par;
+    function setSection($par) {
+        $this -> section = $par;
     }
 
-    function getCss() {
-        return $this -> css;
-    }
-
-    function setJs($par) {
-        $this -> js = $par;
-    }
-
-    function getJs() {
-        return $this -> js;
-    }
-
-    function setController($par) {
-        $this -> controller = $par;
-    }
-
-    function getController() {
-        return $this -> controller;
+    function getSection() {
+        return $this -> section;
     }
 
     function setHeader($par) {
@@ -105,6 +91,22 @@ class AdminPageEditDto extends BaseDto {
         return $this -> footer;
     }
 
+    function setLayoutId($par) {
+        $this -> layoutId = $par;
+    }
+
+    function getLayoutId() {
+        return $this -> layoutId;
+    }
+
+    function setContentOld($par) {
+        $this -> contentOld = $par;
+    }
+
+    function getContentOld() {
+        return $this -> contentOld;
+    }
+
     function setHeaderOld($par) {
         $this -> headerOld = $par;
     }
@@ -129,6 +131,14 @@ class AdminPageEditDto extends BaseDto {
         return $this -> footerOld;
     }
 
+    function setContentArray($par) {
+        $this -> content_array = $par;
+    }
+
+    function getContentArray() {
+        return $this -> content_array;
+    }
+
     function setHeaderArray($par) {
         $this -> header_array = $par;
     }
@@ -151,6 +161,14 @@ class AdminPageEditDto extends BaseDto {
 
     function getFooterArray() {
         return $this -> footer_array;
+    }
+
+    function setLayoutArray($par) {
+        $this -> layout_array = $par;
+    }
+
+    function getLayoutArray() {
+        return $this -> layout_array;
     }
 
 }

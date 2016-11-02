@@ -43,24 +43,41 @@
     </label>
     <label class="field-select">
         <span>Layout</span>
-        <select name="layout">
+        <select name="layoutId">
             <?php foreach ($dto -> getLayoutArray() as $layout_array) { ?>
-                <option value="<?php echo $layout_array['id']; ?>" <?php if ($dto -> getLayout() == $layout_array['id']) echo 'selected'; ?> data-section-count="<?php echo $layout_array['section_count']; ?>"><?php echo $layout_array['name']; ?></option>
+                <option value="<?php echo $layout_array['id']; ?>" <?php if ($dto -> getLayoutId() == $layout_array['id']) echo 'selected'; ?> data-section-count="<?php echo $layout_array['section_count']; ?>"><?php echo $layout_array['name']; ?></option>
             <?php } ?>
         </select> 
     </label>
     <label class="field-ul">
         <span>Contents</span>
         <ul class="content-list">
-            <li>
-                <select name="content[]">
-                    <option value="" >--</option>
-                    <?php foreach ($dto -> getContentArray() as $content_array) { ?>
-                        <option value="<?php echo $content_array['id']; ?>" <?php if ($dto -> getContent() == $content_array['id']) echo 'selected'; ?>><?php echo $content_array['name']; ?></option>
-                    <?php } ?>
-                </select>
-                <select name="section[]"></select>
-            </li>
+            <?php if (count($dto -> getContent()) == 0) { ?>
+                <li>
+                    <select name="content[]">
+                        <option value="" >--</option>
+                        <?php foreach ($dto -> getContentArray() as $content_array) { ?>
+                            <option value="<?php echo $content_array['id']; ?>"><?php echo $content_array['name']; ?></option>
+                        <?php } ?>
+                    </select>
+                    <select name="section[]"></select>
+                </li>
+            <?php } else { ?>
+                <?php foreach ($dto -> getContent() as $index => $content) { ?>
+                    <li>
+                        <select name="content[]">
+                            <option value="" >--</option>
+                            <?php foreach ($dto -> getContentArray() as $content_array) { ?>
+                                <option value="<?php echo $content_array['id']; ?>" <?php if ($content == $content_array['id']) echo 'selected'; ?>><?php echo $content_array['name']; ?></option>
+                            <?php } ?>
+                        </select>
+                        <select name="section[]" data-section="<?php echo $dto -> getSection()[$index]; ?>"></select>
+                        <?php if ($index != 0) { ?>
+                            <button class="content-remove">-</button>
+                        <?php } ?>
+                    </li>
+                <?php } ?>
+            <?php } ?>
             <li><button class="content-add">+</button></li>
         </ul>
     </label>

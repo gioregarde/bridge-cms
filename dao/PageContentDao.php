@@ -17,18 +17,26 @@ class PageContentDao extends BaseDao {
     }
 
     static function insert($model) {
-        $statement = "INSERT PAGE_CONTENT (PAGE_ID, CONTENT_ID) VALUES (?, ?)";
-        parent::insert($statement, array($model -> getPageId(), $model -> getContentId()));
+        $statement = "INSERT PAGE_CONTENT (PAGE_ID, CONTENT_ID, SEQUENCE, SECTION_NUM) VALUES (?, ?, ?, ?)";
+        parent::insert($statement, array($model -> getPageId(), $model -> getContentId(), $model -> getSequence(), $model -> getSectionNum()));
     }
 
     static function update($model, $content_id) {
-        $statement = "UPDATE PAGE_CONTENT SET CONTENT_ID = ? WHERE PAGE_ID = ? AND CONTENT_ID = ?";
-        parent::update($statement, array($model -> getContentId(), $model -> getPageId(), $content_id));
+        if ($model -> getSequence() || $model -> getSectionNum()) {
+            $statement = "UPDATE PAGE_CONTENT SET CONTENT_ID = ?, SECTION_NUM = ? WHERE PAGE_ID = ? AND CONTENT_ID = ? AND SEQUENCE = ?";
+        } else {
+            $statement = "UPDATE PAGE_CONTENT SET CONTENT_ID = ?, SECTION_NUM = ? WHERE PAGE_ID = ? AND CONTENT_ID = ? AND SEQUENCE is ?";
+        }
+        parent::update($statement, array($model -> getContentId(), $model -> getSectionNum(), $model -> getPageId(), $content_id, $model -> getSequence()));
     }
 
     static function delete($model) {
-        $statement = 'DELETE FROM PAGE_CONTENT WHERE PAGE_ID = ? AND CONTENT_ID = ?';
-        return parent::delete($statement, array($model -> getPageId(), $model -> getContentId()));
+        if ($model -> getSequence() || $model -> getSectionNum()) {
+            $statement = 'DELETE FROM PAGE_CONTENT WHERE PAGE_ID = ? AND CONTENT_ID = ? AND SEQUENCE = ?';
+        } else {
+            $statement = 'DELETE FROM PAGE_CONTENT WHERE PAGE_ID = ? AND CONTENT_ID = ? AND SEQUENCE is ?';
+        }
+        return parent::delete($statement, array($model -> getPageId(), $model -> getContentId(), $model -> getSequence()));
     }
 
     static function deleteByPageId($id_array) {

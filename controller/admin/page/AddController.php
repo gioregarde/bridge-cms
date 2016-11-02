@@ -37,6 +37,17 @@ class AdminPageAddController extends BaseController {
                     PageContentDao::insert($page_content_model);
                 }
 
+                $sequence_count = 0;
+                foreach ($this -> request -> getContent() as $index => $content) {
+                    if ($content != null && $content != "") {
+                        $page_content_model -> setContentId($content);
+                        $page_content_model -> setSequence($sequence_count);
+                        $page_content_model -> setSectionNum($this -> request -> getSection()[$index]);
+                        PageContentDao::insert($page_content_model);
+                        $sequence_count++;
+                    }
+                }
+
                 redirect('/admin/pages?action=Success&name='.$page_model -> getName());
             } else {
                 $this -> response -> setError($this -> request -> getErrors());
@@ -46,7 +57,6 @@ class AdminPageAddController extends BaseController {
 
         $array = array();
         $model_array = ContentDao::findAllByContentType(1);
-        print_r($model_array);
         foreach ($model_array as $model) {
             array_push($array, array('id' => $model -> getId(), 'name' => $model -> getName()));
         }
