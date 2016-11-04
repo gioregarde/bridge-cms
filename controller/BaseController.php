@@ -9,8 +9,6 @@ class BaseController {
     protected $request;
     protected $response;
 
-    protected $filename;
-
     function __construct($path = null) {
         if ($path != null) {
             $request_name = join($path).Properties::get(Properties::FILE_EXT_REQUEST);
@@ -31,9 +29,20 @@ class BaseController {
     }
 
     function action() {
-        // common logic
         if (get_class($this) == 'BaseController') {
             $page_model = PageDao::findByUrl(ltrim($_SERVER['REQUEST_URI'], Properties::PATH_DIV));
+            $this -> response -> setDto(new PageDto($page_model));
+
+            $dto_array = array();
+            $model_array = PageContentDao::findByPageId($page_model -> getId());
+            foreach ($model_array as $model) {
+                $page_dto = new PageDto($model);
+                $page_dto -> setId($model -> getContentId());
+                $content = ContentDao::findById($model -> getContentId());
+                $page_dto -> setContentTypeId($content -> getContentTypeId());
+                array_push($dto_array, $page_dto);
+            }
+            $this -> response -> setDtoArray($dto_array);
         }
     }
 

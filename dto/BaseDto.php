@@ -15,6 +15,7 @@ class BaseDto {
     function getId() {
         return $this -> id;
     }
+
 }
 
 ?>

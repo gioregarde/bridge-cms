@@ -1,21 +1,8 @@
 <!DOCTYPE html>
-<html>
-    <?php if (get_class($this) == 'BaseController' && $this -> filename) { ?>
-        <head>
-            <style>
-                <?php echo htmlspecialchars(PageUtil::getCss($this -> filename)); ?>
-            </style>
-            <script type="text/javascript">
-                <?php echo htmlspecialchars(PageUtil::getJs($this -> filename)); ?>
-            </script>
-        </head>
-        <body>
-            <?php require_once(PageUtil::PATH_DYNAMIC_CONTROLLER.$this -> filename); ?>
-            <content>
-                <?php require_once(PageUtil::PATH_DYNAMIC_HTML.$this -> filename); ?>
-            </content>
-        </body>
-    <?php } else { ?>
+<?php if (get_class($this) == 'BaseController' && $dto -> getId()) { ?>
+    <?php require_once('resources/dynamic/layout/'.$dto -> getLayoutId().'.php'); ?>
+<?php } else { ?>
+    <html>
         <head>
             <?php require_once(Properties::get(Properties::PATH_MISC).$this -> layout); ?>
             <?php if ($this -> css && file_exists($this -> css)) { ?>
@@ -36,5 +23,5 @@
                 <?php require_once(Properties::get(Properties::PATH_FOOTER).$this -> layout); ?>
             </footer>
         </body>
-    <?php } ?>
-</html>
+    </html>
+<?php } ?>

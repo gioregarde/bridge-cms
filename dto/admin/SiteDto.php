@@ -2,8 +2,8 @@
 
 class AdminSiteDto extends BaseDto {
 
-    private $name;
-    private $layout;
+    protected $name;
+    protected $layout;
 
     function __construct($model = null) {
         parent::__construct($model);
