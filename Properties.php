@@ -2,29 +2,29 @@
 
 class Properties {
 
-    const REGEX_URL = '/^([A-Za-z0-9]+)$/';
-    const REGEX_CLASS_SPLIT = '/(?=[A-Z])/';
-
-    const PATH_DIV = '/';
-    const PATH_EXT_PHP = '.php';
-    const PATH_EXT_CSS = '.css';
-    const PATH_EXT_JS = '.js';
-
+    // Looger.php
+    const DEBUG_NAME = 'System';
     const DEBUG_LEVEL = 'debug.level';
-    const DEBUG_LEVEL_WARN = 0;
-    const DEBUG_LEVEL_INFO = 1;
-    const DEBUG_LEVEL_DEBUG = 2;
-    const DEBUG_LEVEL_ERR = 3;
+    const DEBUG_LEVEL_ERR = 0;
+    const DEBUG_LEVEL_WARN = 1;
+    const DEBUG_LEVEL_INFO = 2;
+    const DEBUG_LEVEL_DEBUG = 3;
 
+    // DBConnection.php
     const DB_HOST = 'db.host';
     const DB_NAME = 'db.name';
     const DB_USER = 'db.user';
     const DB_PASS = 'db.pass';
 
-    const FILE_EXT_CONTROLLER = 'file.ext.controller';
-    const FILE_EXT_DTO = 'file.ext.dto';
-    const FILE_EXT_REQUEST= 'file.ext.request';
-    const FILE_EXT_RESPONSE = 'file.ext.response';
+    const SESSION_AUTHENTICATED = 'authenticated';
+
+    const REGEX_URL = '/^([A-Za-z0-9]+)$/'; // get controller name (URLMapper.php)
+    const REGEX_CLASS_SPLIT = '/(?=[A-Z])/'; // get file path from class name (ClassLoader.php)
+
+    const PATH_DIV = '/';
+    const PATH_EXT_PHP = '.php';
+    const PATH_EXT_CSS = '.css';
+    const PATH_EXT_JS = '.js';
 
     const PATH_CORE = 'path.core';
     const PATH_CONTROLLER = 'path.controller';
@@ -41,6 +41,18 @@ class Properties {
     const PATH_MISC = 'path.misc';
     const PATH_CSS = 'path.css';
     const PATH_JS = 'path.js';
+
+    const PATH_DYNAMIC_LAYOUT = 'path.dynamic.layout';
+    const PATH_DYNAMIC_LAYOUT_CSS = 'path.dynamic.layout.css';
+    const PATH_DYNAMIC_PAGE_CONTROLLER = 'path.dynamic.page.controller';
+    const PATH_DYNAMIC_PAGE_CSS = 'path.dynamic.page.css';
+    const PATH_DYNAMIC_PAGE_JS = 'path.dynamic.page.js';
+    const PATH_DYNAMIC_PAGE_VIEW = 'path.dynamic.page.view';
+
+    const FILE_EXT_CONTROLLER = 'file.ext.controller';
+    const FILE_EXT_DTO = 'file.ext.dto';
+    const FILE_EXT_REQUEST= 'file.ext.request';
+    const FILE_EXT_RESPONSE = 'file.ext.response';
 
     const PROPERTIES_FILE = 'resources/properties.ini';
 

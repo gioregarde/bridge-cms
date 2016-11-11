@@ -83,7 +83,6 @@ class AdminPageEditController extends BaseController {
                         $page_content_model -> setContentId($this -> request -> getContent()[$index]);
                         $page_content_model -> setSequence($index);
                         $page_content_model -> setSectionNum($this -> request -> getSection()[$index]);
-                        console($index < count($this -> request -> getContent()));
                         if ($index < count($this -> request -> getContent())) {
                             PageContentDao::update($page_content_model, $this -> request -> getContentOld()[$index]);
                         } else {

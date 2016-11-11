@@ -2,6 +2,8 @@
 
 class DBConnection {
 
+    private static $isTransaction = false;
+
     private static function getConnection() {
         static $con;
         if (!isset($con)) {
@@ -28,6 +30,25 @@ class DBConnection {
 
     public static function getInsertedIndex() {
         return self::getConnection() -> lastInsertId();
+    }
+
+    public static function beginTransaction($statement, $values = null) {
+        if (!self::$isTransaction) {
+            self::getConnection() -> beginTransaction();
+            self::$isTransaction = true;
+        }
+    }
+
+    public static function endTransaction($statement, $values = null) {
+        if (self::$isTransaction) {
+            try {
+                self::getConnection() -> commit();
+            } catch (Exception $e) {
+                self::getConnection() -> rollBack();
+                error($e);
+            }
+            self::$isTransaction = false;
+        }
     }
 
 }

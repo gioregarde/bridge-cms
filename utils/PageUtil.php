@@ -93,7 +93,6 @@ class PageUtil {
     }
 
     private static function write($filename, $content) {
-        console($filename);
         if ($content) {
             return file_put_contents($filename, $content);
         }

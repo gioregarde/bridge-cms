@@ -18,7 +18,7 @@
         array_shift($path);
         $controller = new $controller_name($path);
     } catch (Exception $e) {
-        console($e);
+        error($e);
         $controller = new BaseController();
     }
 
