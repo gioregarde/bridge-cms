@@ -46,4 +46,3 @@ class AdminFooterDto extends BaseDto {
 }
 
 ?>
-

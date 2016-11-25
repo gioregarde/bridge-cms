@@ -17,6 +17,7 @@ class Properties {
     const DB_PASS = 'db.pass';
 
     const SESSION_AUTHENTICATED = 'authenticated';
+    const SESSION_AUTHENTICATED_USER_ID = 'authenticated_user_id';
 
     const REGEX_URL = '/^([A-Za-z0-9]+)$/'; // get controller name (URLMapper.php)
     const REGEX_CLASS_SPLIT = '/(?=[A-Z])/'; // get file path from class name (ClassLoader.php)
@@ -33,6 +34,7 @@ class Properties {
     const PATH_MODEL = 'path.model';
     const PATH_REQUEST = 'path.request';
     const PATH_RESPONSE = 'path.response';
+    const PATH_SERVICE = 'path.service';
     const PATH_UTILS = 'path.utils';
     const PATH_CONSTANTS = 'path.constants';
     const PATH_PAGE = 'path.page';
@@ -53,6 +55,7 @@ class Properties {
     const FILE_EXT_DTO = 'file.ext.dto';
     const FILE_EXT_REQUEST= 'file.ext.request';
     const FILE_EXT_RESPONSE = 'file.ext.response';
+    const FILE_EXT_SERVICE = 'file.ext.service';
 
     const PROPERTIES_FILE = 'resources/properties.ini';
 

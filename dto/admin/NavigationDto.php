@@ -46,4 +46,3 @@ class AdminNavigationDto extends BaseDto {
 }
 
 ?>
-

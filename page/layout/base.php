@@ -5,10 +5,10 @@
     <html>
         <head>
             <?php require_once(Properties::get(Properties::PATH_MISC).$this -> layout); ?>
-            <?php if ($this -> css && file_exists($this -> css)) { ?>
+            <?php if ($this -> css) { ?>
                 <link rel="stylesheet" type="text/css" href="<?php echo Properties::PATH_DIV.$this -> css; ?>">
             <?php } ?>
-            <?php if ($this -> js && file_exists($this -> js)) { ?>
+            <?php if ($this -> js) { ?>
                 <script type="text/javascript" src="<?php echo Properties::PATH_DIV.$this -> js; ?>"></script>
             <?php } ?>
         </head>

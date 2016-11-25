@@ -21,6 +21,7 @@
         $user_model = UserDao::findByUsername($username);
         if ($user_model -> getUsername() && sha1($password) == $user_model -> getPassword()) {
             $_SESSION[Properties::SESSION_AUTHENTICATED] = true;
+            $_SESSION[Properties::SESSION_AUTHENTICATED_USER_ID] = $user_model -> getId();
         } else {
             session_destroy();
         }

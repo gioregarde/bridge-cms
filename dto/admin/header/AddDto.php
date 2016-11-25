@@ -12,7 +12,6 @@ class AdminHeaderAddDto extends BaseDto {
         parent::__construct($model);
     }
 
-
     function setName($par) {
         $this -> name = $par;
     }
@@ -56,4 +55,3 @@ class AdminHeaderAddDto extends BaseDto {
 }
 
 ?>
-

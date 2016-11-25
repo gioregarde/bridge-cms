@@ -32,14 +32,14 @@ class DBConnection {
         return self::getConnection() -> lastInsertId();
     }
 
-    public static function beginTransaction($statement, $values = null) {
+    public static function beginTransaction() {
         if (!self::$isTransaction) {
             self::getConnection() -> beginTransaction();
             self::$isTransaction = true;
         }
     }
 
-    public static function endTransaction($statement, $values = null) {
+    public static function endTransaction() {
         if (self::$isTransaction) {
             try {
                 self::getConnection() -> commit();

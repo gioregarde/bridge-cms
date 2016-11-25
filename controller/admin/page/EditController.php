@@ -19,8 +19,7 @@ class AdminPageEditController extends BaseController {
             if ($this -> request -> valid()) {
                 $page_model = new PageModel();
                 ObjectUtil::copy($this -> request, $page_model);
-                $page_model -> setEnabled(1);
-                $page_model -> setUserId(1);
+                $page_model -> setUserId($this -> user_id);
                 PageDao::update($page_model);
 
                 $page_content_model = new PageContentModel();

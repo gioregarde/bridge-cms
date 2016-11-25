@@ -2,21 +2,15 @@
 
 class PageContentModel extends BaseModel {
 
-    protected $content_id;
     protected $page_id;
     protected $sequence;
     protected $section_num;
 
+    protected $content_id;
+    protected $content_model;
+
     function __construct($par = null) {
         parent::__construct($par);
-    }
-
-    function setContentId($par) {
-        $this -> content_id = $par;
-    }
-
-    function getContentId() {
-        return $this -> content_id;
     }
 
     function setPageId($par) {
@@ -41,6 +35,22 @@ class PageContentModel extends BaseModel {
 
     function getSectionNum() {
         return $this -> section_num;
+    }
+
+    function setContentId($par) {
+        $this -> content_id = $par;
+    }
+
+    function getContentId() {
+        return $this -> content_id;
+    }
+
+    function setContentModel($par) {
+        $this -> content_model = $par;
+    }
+
+    function getContentModel() {
+        return $this -> content_model;
     }
 
 }

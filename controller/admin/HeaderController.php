@@ -19,22 +19,9 @@ class AdminHeaderController extends BaseController {
             }
         } elseif ($this -> request -> getAction() == 'Delete') {
             if ($this -> request -> valid()) {
-                $count = ContentDao::delete($this -> request -> getId());
-                if ($count > 0) {
+                $service = new AdminContentService();
+                if ($service -> deleteContent($this -> request, 2)) {
                     $this -> response -> addNotification('Delete successful.');
-
-                    foreach ($this -> request -> getId() as $id) {
-                        $model = new ContentModel();
-                        $model -> setId($id);
-                        $model -> setContentTypeId(2);
-
-                        $filename = PageUtil::generateFilename($model);
-                        PageUtil::deleteView($filename);
-                        PageUtil::deleteCss($filename);
-                        PageUtil::deleteJs($filename);
-                        PageUtil::deleteController($filename);
-
-                    }
                 }
             } else {
                 $this -> response -> setError($this -> request -> getErrors());

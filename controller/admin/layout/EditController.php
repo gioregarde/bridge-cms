@@ -16,6 +16,7 @@ class AdminLayoutEditController extends BaseController {
                 $model = new LayoutModel();
                 ObjectUtil::copy($this -> request, $model);
                 $model -> setSectionCount(preg_match_all('/class=\".*content.*\"/U', htmlspecialchars_decode($this -> request -> getLayout())));
+                $model -> setUserId($this -> user_id);
                 LayoutDao::update($model);
 
                 PageUtil::writeLayout($model -> getId(), htmlspecialchars_decode($this -> request -> getLayout()));

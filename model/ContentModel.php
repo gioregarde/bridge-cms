@@ -2,22 +2,15 @@
 
 class ContentModel extends BaseModel {
 
-    protected $content_type_id;
     protected $name;
-    protected $enabled;
     protected $datetime;
     protected $user_id;
 
+    protected $content_type_id;
+    protected $content_type_model;
+
     function __construct($par = null) {
         parent::__construct($par);
-    }
-
-    function setContentTypeId($par) {
-        $this -> content_type_id = $par;
-    }
-
-    function getContentTypeId() {
-        return $this -> content_type_id;
     }
 
      function setName($par) {
@@ -26,14 +19,6 @@ class ContentModel extends BaseModel {
 
     function getName() {
         return $this -> name;
-    }
-
-    function setEnabled($par) {
-        $this -> enabled = $par;
-    }
-
-    function getEnabled() {
-        return $this -> enabled;
     }
 
     function setDatetime($par) {
@@ -50,6 +35,22 @@ class ContentModel extends BaseModel {
 
     function getUserId() {
         return $this -> user_id;
+    }
+
+    function setContentTypeId($par) {
+        $this -> content_type_id = $par;
+    }
+
+    function getContentTypeId() {
+        return $this -> content_type_id;
+    }
+
+    function setContentTypeModel($par) {
+        $this -> content_type_model = $par;
+    }
+
+    function getContentTypeModel() {
+        return $this -> content_type_model;
     }
 
 }

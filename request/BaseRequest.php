@@ -47,6 +47,10 @@ class BaseRequest {
         return $this -> errors;
     }
 
+    function valid() {
+        // common validation
+    }
+
 }
 
 ?>

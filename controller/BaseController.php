@@ -9,23 +9,28 @@ class BaseController {
     protected $request;
     protected $response;
 
+    protected $user_id;
+
     function __construct($path = null) {
+        $this -> request = new BaseRequest();
+        $this -> response = new BaseResponse();
+        $this -> view = 'page/index.php';
+        $this -> css = '';
+        $this -> js = '';
+        $this -> layout = 'default.php';
         if ($path != null) {
             $request_name = join($path).Properties::get(Properties::FILE_EXT_REQUEST);
             $response_name = join($path).Properties::get(Properties::FILE_EXT_RESPONSE);
-            $this -> request = new $request_name();
-            $this -> response = new $response_name();
-            $this -> view = Properties::get(Properties::PATH_PAGE).strtolower(join(Properties::PATH_DIV, $path).Properties::PATH_EXT_PHP);
-            $this -> css = Properties::get(Properties::PATH_CSS).strtolower(join(Properties::PATH_DIV, $path).Properties::PATH_EXT_CSS);
-            $this -> js = Properties::get(Properties::PATH_JS).strtolower(join(Properties::PATH_DIV, $path).Properties::PATH_EXT_JS);
-        } else {
-            $this -> request = new BaseRequest();
-            $this -> response = new BaseResponse();
-            $this -> view = 'page/index.php';
-            $this -> css = '';
-            $this -> js = '';
+            $view_name = Properties::get(Properties::PATH_PAGE).strtolower(join(Properties::PATH_DIV, $path).Properties::PATH_EXT_PHP);
+            $css_name = Properties::get(Properties::PATH_CSS).strtolower(join(Properties::PATH_DIV, $path).Properties::PATH_EXT_CSS);
+            $js_name = Properties::get(Properties::PATH_JS).strtolower(join(Properties::PATH_DIV, $path).Properties::PATH_EXT_JS);
+
+            if (file_exists(Properties::get(Properties::PATH_REQUEST).parseClassPath($request_name).Properties::PATH_EXT_PHP)) $this -> request = new $request_name();
+            if (file_exists(Properties::get(Properties::PATH_RESPONSE).parseClassPath($response_name).Properties::PATH_EXT_PHP)) $this -> response = new $response_name();
+            if (file_exists($view_name)) $this -> view = $view_name;
+            if (file_exists($css_name)) $this -> css = $css_name;
+            if (file_exists($js_name)) $this -> js = $js_name;
         }
-        $this -> layout = 'default.php';
     }
 
     function action() {
@@ -43,6 +48,9 @@ class BaseController {
                 array_push($dto_array, $page_dto);
             }
             $this -> response -> setDtoArray($dto_array);
+        } 
+        if (isset($_SESSION[Properties::SESSION_AUTHENTICATED_USER_ID])) {
+            $this -> user_id = $_SESSION[Properties::SESSION_AUTHENTICATED_USER_ID];
         }
     }
 

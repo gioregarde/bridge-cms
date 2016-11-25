@@ -26,8 +26,11 @@ class AdminLoginRequest extends BaseRequest {
     }
 
     function valid() {
-        return $this -> username != null && $this -> password;
+        parent::addError(ErrorUtil::isRequired('Username', $this -> username));
+        parent::addError(ErrorUtil::isRequired('Password', $this -> password));
+        return !parent::hasErrors();
     }
+
 }
 
 ?>

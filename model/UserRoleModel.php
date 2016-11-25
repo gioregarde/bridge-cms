@@ -1,11 +1,11 @@
 <?php
 
-class AdminLayoutDto extends BaseDto {
+class UserRoleModel extends BaseModel {
 
     protected $name;
 
-    function __construct($model = null) {
-        parent::__construct($model);
+    function __construct($par = null) {
+        parent::__construct($par);
     }
 
     function setName($par) {

@@ -22,8 +22,8 @@ class ContentDao extends BaseDao {
     }
 
     static function insert($model) {
-        $statement = "INSERT CONTENT (CONTENT_TYPE_ID, NAME, ENABLED, USER_ID) VALUES (?, ?, ?, ?)";
-        $model -> setId(parent::insert($statement, array($model -> getContentTypeId(), $model -> getName(), $model -> getEnabled(), $model -> getUserId())));
+        $statement = "INSERT CONTENT (CONTENT_TYPE_ID, NAME, USER_ID) VALUES (?, ?, ?)";
+        $model -> setId(parent::insert($statement, array($model -> getContentTypeId(), $model -> getName(), $model -> getUserId())));
     }
 
     static function update($model) {

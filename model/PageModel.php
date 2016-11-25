@@ -4,10 +4,12 @@ class PageModel extends BaseModel {
 
     protected $name;
     protected $url;
-    protected $enabled;
     protected $datetime;
     protected $user_id;
+
     protected $layout_id;
+    protected $layout_model;
+    protected $page_content_model_list;
 
     function __construct($par = null) {
         parent::__construct($par);
@@ -27,14 +29,6 @@ class PageModel extends BaseModel {
 
     function getUrl() {
         return $this -> url;
-    }
-
-    function setEnabled($par) {
-        $this -> enabled = $par;
-    }
-
-    function getEnabled() {
-        return $this -> enabled;
     }
 
     function setDatetime($par) {
@@ -59,6 +53,22 @@ class PageModel extends BaseModel {
 
     function getLayoutId() {
         return $this -> layout_id;
+    }
+
+    function setLayoutModel($par) {
+        $this -> layout_model = $par;
+    }
+
+    function getLayoutModel() {
+        return $this -> layout_model;
+    }
+
+    function setPageContentModelList($par) {
+        $this -> page_content_model_list = $par;
+    }
+
+    function getPageContentModelList() {
+        return $this -> page_content_model_list;
     }
 
 }
