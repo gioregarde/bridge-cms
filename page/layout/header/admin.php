@@ -20,7 +20,10 @@
     </li>
     <li>
         <a href="/admin/layout">Layout</a>
-    </li>    
+    </li>
+    <li>
+        <a href="/admin/file">File Manager</a>
+    </li>
 </ul>
 <div class="settings">
     <span>Admin &#9660;</span>

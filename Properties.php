@@ -50,6 +50,7 @@ class Properties {
     const PATH_DYNAMIC_PAGE_CSS = 'path.dynamic.page.css';
     const PATH_DYNAMIC_PAGE_JS = 'path.dynamic.page.js';
     const PATH_DYNAMIC_PAGE_VIEW = 'path.dynamic.page.view';
+    const PATH_DYNAMIC_FILE = 'path.dynamic.file';
 
     const FILE_EXT_CONTROLLER = 'file.ext.controller';
     const FILE_EXT_DTO = 'file.ext.dto';
