@@ -19,6 +19,9 @@ class BaseRequest {
                 }
             }
         }
+        foreach ($_FILES as $key => $param ) {
+            $this -> $key = $param;
+        }
     }
 
     protected function getParam($param) {

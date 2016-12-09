@@ -18,6 +18,10 @@
         echo file_get_contents($path);
         exit;
 
+    } else if (strpos($path, Properties::get(Properties::PATH_DYNAMIC_FILE)) !== false && file_exists($path)) {
+        header('Content-type: '.mime_content_type($path));
+        echo file_get_contents($path);
+        exit;
     }
 
 ?>

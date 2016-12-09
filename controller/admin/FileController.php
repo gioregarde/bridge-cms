@@ -11,9 +11,22 @@ class AdminFileController extends BaseController {
         parent::action();
         authenticateForward();
 
-        $dir_path = Properties::get(Properties::PATH_DYNAMIC_FILE).$this -> request -> getPath();
+        $dir_path = Properties::get(Properties::PATH_DYNAMIC_FILE).substr($this -> request -> getPath(), 1);
+        if ($this -> request -> getPath() != null && $this -> request -> getPath() != '') {
+            $dir_path = $dir_path.Properties::PATH_DIV;
+        }
+        echo $dir_path;
 
-        $dto_array = array();
+        if ($this -> request -> getAction() == 'Upload') {
+            move_uploaded_file($this -> request -> getFileUpload()["tmp_name"], $dir_path.$this -> request -> getFileUpload()["name"]);
+        } else if ($this -> request -> getAction() == 'CreateFolder') {
+            mkdir($dir_path.$this -> request -> getFolder());
+        } else if ($this -> request -> getAction() == 'Delete') {
+            FileUtil::delete($dir_path.$this -> request -> getFile());
+        }
+
+        $dir_dto_array = array();
+        $file_dto_array = array();
         $dir  = opendir($dir_path);
         while (false !== ($filename = readdir($dir))) {
             if ($filename == '.' || $filename == '..') {
@@ -21,15 +34,21 @@ class AdminFileController extends BaseController {
             }
             $dto = new AdminFileDto();
             $dto -> setName($filename);
-            $dto -> setType(filetype($dir_path.Properties::PATH_DIV.$filename));
-            $dto -> setSize(filesize($dir_path.Properties::PATH_DIV.$filename));
-            array_push($dto_array, $dto);
+            $dto -> setType(filetype($dir_path.$filename));
+            $dto -> setSize(filesize($dir_path.$filename));
+            $dto -> setMimeContentType(mime_content_type($dir_path.$filename));
+            if ($dto -> getType() == 'dir') {
+                array_push($dir_dto_array, $dto);
+            } else {
+                array_push($file_dto_array, $dto);
+            }
         }
-        $this -> response -> setDtoArray($dto_array);
+        $this -> response -> setDtoArray(array_merge($dir_dto_array, $file_dto_array));
 
         $dto = new AdminFileDto();
         $dto -> setPath($this -> request -> getPath());
         $this -> response -> setDto($dto);
+
     }
 
 }
