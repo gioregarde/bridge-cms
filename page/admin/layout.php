@@ -1,4 +1,4 @@
-<form action="/admin/layout" method="post">
+<form action="<?php echo Properties::getUrlRoot(true); ?>/admin/layout" method="post">
     <?php if ($response -> hasNotifications()) { ?>
         <label>
             <?php foreach ($response -> getNotifications() as $notification) { ?>
@@ -24,13 +24,13 @@
                 <tr>
                     <td><input type="checkbox" name="id[]" value="<?php echo $dto -> getId(); ?>"/></td>
                     <td><?php echo $dto -> getId(); ?></td>
-                    <td><a href="/admin/layout/edit?id=<?php echo $dto -> getId(); ?>"><?php echo $dto -> getName(); ?></a></td>
+                    <td><a href="<?php echo Properties::getUrlRoot(true); ?>/admin/layout/edit?id=<?php echo $dto -> getId(); ?>"><?php echo $dto -> getName(); ?></a></td>
                 </tr>
             <?php } ?>
         </table>
     </div>
     <label>
-        <a class="button" href="/admin/layout/add">Add</a>
+        <a class="button" href="<?php echo Properties::getUrlRoot(true); ?>/admin/layout/add">Add</a>
         <input type="submit" name="action" value="Delete">
     </label>
 </form>

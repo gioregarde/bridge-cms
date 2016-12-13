@@ -21,6 +21,7 @@ class AdminPagesController extends BaseController {
             if ($this -> request -> valid()) {
                 PageContentDao::deleteByPageId($this -> request -> getId());
                 PageDao::delete($this -> request -> getId());
+                $this -> response -> addNotification('Delete successful.');
             } else {
                 $this -> response -> setError($this -> request -> getErrors());
             }

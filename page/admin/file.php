@@ -1,4 +1,4 @@
-<form action="/admin/file?path=<?php echo $dto -> getPath(); ?>"" method="post" enctype="multipart/form-data">
+<form action="<?php echo Properties::getUrlRoot(true); ?>/admin/file?path=<?php echo $dto -> getPath(); ?>"" method="post" enctype="multipart/form-data">
     <?php if ($response -> hasNotifications()) { ?>
         <label>
             <?php foreach ($response -> getNotifications() as $notification) { ?>
@@ -24,9 +24,9 @@
                 <tr>
                     <td>
                         <?php if ($item -> getType() == 'dir') { ?>
-                            <a href="/admin/file?path=<?php echo $dto -> getPath().'/'.$item -> getName(); ?>"><?php echo $item -> getName(); ?></a>
+                            <a href="<?php echo Properties::getUrlRoot(true); ?>/admin/file?path=<?php echo $dto -> getPath().'/'.$item -> getName(); ?>"><?php echo $item -> getName(); ?></a>
                         <?php } else { ?>
-                            <a href="<?php echo $dto -> getFilePath().Properties::PATH_DIV.$item -> getName(); ?>" target="_blank"><?php echo $item -> getName(); ?></a>
+                            <a href="<?php echo Properties::getUrlRoot(true).$dto -> getFilePath().Properties::PATH_DIV.$item -> getName(); ?>" target="_blank"><?php echo $item -> getName(); ?></a>
                         <?php } ?>
                     </td>
                     <td><?php echo $item -> getSize(); ?></td>
@@ -47,6 +47,6 @@
     </div>
     <input type="hidden" name="file"/>
     <label>
-        <a class="button" href="/admin/file?path=<?php echo $dto -> getBackPath(); ?>">Back</a>
+        <a class="button" href="<?php echo Properties::getUrlRoot(true); ?>/admin/file?path=<?php echo $dto -> getBackPath(); ?>">Back</a>
     </label>
 </form>

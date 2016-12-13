@@ -1,4 +1,4 @@
-<form action="/admin/content/add" method="post">
+<form action="<?php echo Properties::getUrlRoot(true); ?>/admin/content/add" method="post">
     <?php if ($response -> hasErrors()) { ?>
         <label>
             <?php foreach ($response -> getErrors() as $error) { ?>

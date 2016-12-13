@@ -1,4 +1,4 @@
-<form action="/admin/site" method="post">
+<form action="<?php echo Properties::getUrlRoot(true); ?>/admin/site" method="post">
     <?php if ($response -> hasNotifications()) { ?>
         <label>
             <?php foreach ($response -> getNotifications() as $notification) { ?>

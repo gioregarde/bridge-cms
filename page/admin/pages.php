@@ -1,4 +1,4 @@
-<form action="/admin/pages" method="post">
+<form action="<?php echo Properties::getUrlRoot(true); ?>/admin/pages" method="post">
     <?php if ($response -> hasNotifications()) { ?>
         <label>
             <?php foreach ($response -> getNotifications() as $notification) { ?>
@@ -27,7 +27,7 @@
                 <tr>
                     <td><input type="checkbox" name="id[]" value="<?php echo $dto -> getId(); ?>"/></td>
                     <td><?php echo $dto -> getId(); ?></td>
-                    <td><a href="/admin/page/edit?id=<?php echo $dto -> getId(); ?>"><?php echo $dto -> getName(); ?></a></td>
+                    <td><a href="<?php echo Properties::getUrlRoot(true); ?>/admin/page/edit?id=<?php echo $dto -> getId(); ?>"><?php echo $dto -> getName(); ?></a></td>
                     <td><?php echo $dto -> getUrl(); ?></td>
                     <td><?php echo $dto -> getEnabled(); ?></td>
                     <td><?php echo $dto -> getDatetime(); ?></td>
@@ -36,7 +36,7 @@
         </table>
     </div>
     <label>
-        <a class="button" href="/admin/page/add">Add</a>
+        <a class="button" href="<?php echo Properties::getUrlRoot(true); ?>/admin/page/add">Add</a>
         <input type="submit" name="action" value="Delete">
     </label>
 </form>

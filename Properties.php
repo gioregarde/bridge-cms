@@ -68,6 +68,18 @@ class Properties {
         return $properties[$key];
     }
 
+    public static function getUrlRoot($isPrefix = false) {
+        if ($isPrefix) {
+            return self::PATH_DIV.str_replace($_SERVER['DOCUMENT_ROOT'].'/', '', __DIR__);
+        } else {
+            return str_replace($_SERVER['DOCUMENT_ROOT'].'/', '', __DIR__).self::PATH_DIV;
+        }
+    }
+
+    public static function getRoot($url) {
+        return str_replace(str_replace($_SERVER['DOCUMENT_ROOT'], '', __DIR__.Properties::PATH_DIV), '', $url);
+    }
+
 }
 
 ?>

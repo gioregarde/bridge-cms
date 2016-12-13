@@ -3,7 +3,7 @@
     session_start();
 
     function redirect($path) {
-        header('Location: '.$path);
+        header('Location: '.Properties::getUrlRoot(true).$path);
         die;
     }
 
@@ -31,7 +31,8 @@
         if (!isset($_SERVER['HTTPS']) || !$_SERVER['HTTPS']) {
             $redirect = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
             header('HTTP/1.1 301 Moved Permanently');
-            redirect($redirect);
+            header('Location: '.$redirect);
+            die;
         }
     }
 

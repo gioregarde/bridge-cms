@@ -1,4 +1,4 @@
-<form action="/admin/content/edit" method="post">
+<form action="<?php echo Properties::getUrlRoot(true); ?>/admin/content/edit" method="post">
     <input type="hidden" name="id" value="<?php echo $dto -> getId(); ?>"/>
     <?php if ($response -> hasErrors()) { ?>
         <label>

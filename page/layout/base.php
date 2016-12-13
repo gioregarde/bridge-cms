@@ -6,10 +6,10 @@
         <head>
             <?php require_once(Properties::get(Properties::PATH_MISC).$this -> layout); ?>
             <?php if ($this -> css) { ?>
-                <link rel="stylesheet" type="text/css" href="<?php echo Properties::PATH_DIV.$this -> css; ?>">
+                <link rel="stylesheet" type="text/css" href="<?php echo Properties::PATH_DIV.Properties::getUrlRoot().$this -> css; ?>">
             <?php } ?>
             <?php if ($this -> js) { ?>
-                <script type="text/javascript" src="<?php echo Properties::PATH_DIV.$this -> js; ?>"></script>
+                <script type="text/javascript" src="<?php echo Properties::PATH_DIV.Properties::getUrlRoot().$this -> js; ?>"></script>
             <?php } ?>
         </head>
         <body>

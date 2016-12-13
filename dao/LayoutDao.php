@@ -12,13 +12,13 @@ class LayoutDao extends BaseDao {
     }
 
     static function insert($model) {
-        $statement = "INSERT LAYOUT (NAME, SECTION_COUNT) VALUES (?, ?)";
-        $model -> setId(parent::insert($statement, array($model -> getName(), $model -> getSectionCount())));
+        $statement = "INSERT LAYOUT (NAME, SECTION_COUNT, USER_ID) VALUES (?, ?, ?)";
+        $model -> setId(parent::insert($statement, array($model -> getName(), $model -> getSectionCount(), $model -> getUserId())));
     }
 
     static function update($model) {
-        $statement = "UPDATE LAYOUT SET NAME = ?, SECTION_COUNT = ? WHERE ID = ?";
-        return parent::update($statement, array($model -> getName(), $model -> getSectionCount(), $model -> getId()));
+        $statement = "UPDATE LAYOUT SET NAME = ?, SECTION_COUNT = ?, USER_ID = ? WHERE ID = ?";
+        return parent::update($statement, array($model -> getName(), $model -> getSectionCount(), $model -> getUserId(), $model -> getId()));
     }
 
     static function delete($id_array) {

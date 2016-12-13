@@ -23,8 +23,8 @@ class PageDao extends BaseDao {
     }
 
     static function update($page_model) {
-        $statement = "UPDATE PAGE SET NAME = ?, URL = ?, LAYOUT_ID = ? , DATETIME = NOW() WHERE ID = ?";
-        return parent::update($statement, array($page_model -> getName(), $page_model -> getUrl(), $page_model -> getLayoutId(), $page_model -> getId()));
+        $statement = "UPDATE PAGE SET NAME = ?, URL = ?, LAYOUT_ID = ? , DATETIME = NOW(), USER_ID = ? WHERE ID = ?";
+        return parent::update($statement, array($page_model -> getName(), $page_model -> getUrl(), $page_model -> getLayoutId(), $model -> getUserId(), $page_model -> getId()));
     }
 
     static function delete($id_array) {

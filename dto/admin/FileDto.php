@@ -53,7 +53,11 @@ class AdminFileDto extends BaseDto {
     }
 
     function getFilePath() {
-        return Properties::PATH_DIV.substr(Properties::get(Properties::PATH_DYNAMIC_FILE), 0, strlen(Properties::get(Properties::PATH_DYNAMIC_FILE)) - 1).substr($this -> path, 1);
+        if ($this -> path != null || $this -> path != '') {
+            return Properties::PATH_DIV.Properties::get(Properties::PATH_DYNAMIC_FILE).substr($this -> path, 1);
+        } else {
+            return Properties::PATH_DIV.substr(Properties::get(Properties::PATH_DYNAMIC_FILE), 0, strlen(Properties::get(Properties::PATH_DYNAMIC_FILE)) - 1);
+        }
     }
 
     function getBackPath() {

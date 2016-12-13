@@ -1,4 +1,4 @@
-<form class="cambria-font" action="/admin/login" method="post">
+<form class="cambria-font" action="<?php echo Properties::getUrlRoot(true); ?>/admin/login" method="post">
     <h1>Bridge</h1>
     <input name="username" placeholder="Username">
     <input name="password" type="password" placeholder="Password">

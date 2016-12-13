@@ -1,7 +1,7 @@
 <?php
 
     if (isset($misc) && $misc && file_exists('resources/dynamic/layout/css/'.$dto -> getLayoutId().'.css')) {
-        echo '<link rel="stylesheet" type="text/css" href="resources/dynamic/layout/css/'.$dto -> getLayoutId().'.css">';
+        echo '<link rel="stylesheet" type="text/css" href="'.Properties::PATH_DIV.Properties::getUrlRoot().'resources/dynamic/layout/css/'.$dto -> getLayoutId().'.css">';
     }
 
     if (!isset($sec)) {
@@ -42,10 +42,10 @@
             }
         } elseif (isset($misc) && $misc) {
             if (file_exists('resources/dynamic/page/css/'.PageUtil::generateFilename($dto_item).'.css')) {
-                echo '<link rel="stylesheet" type="text/css" href="resources/dynamic/page/css/'.PageUtil::generateFilename($dto_item).'.css">';
+                echo '<link rel="stylesheet" type="text/css" href="'.Properties::PATH_DIV.Properties::getUrlRoot().'resources/dynamic/page/css/'.PageUtil::generateFilename($dto_item).'.css">';
             }
             if (file_exists('resources/dynamic/page/js/'.PageUtil::generateFilename($dto_item).'.js')) {
-                echo '<link rel="stylesheet" type="text/css" href="resources/dynamic/page/js/'.PageUtil::generateFilename($dto_item).'.js">';
+                echo '<script type="text/javascript" src="'.Properties::PATH_DIV.Properties::getUrlRoot().'resources/dynamic/page/js/'.PageUtil::generateFilename($dto_item).'.js"></script>';
             }
         }
     }

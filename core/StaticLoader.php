@@ -1,6 +1,7 @@
 <?php 
 
     $path = substr(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), 1, strlen(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
+    $path = urldecode(str_replace(Properties::getUrlRoot(), '', $path));
     if ((strpos($path, Properties::get(Properties::PATH_CSS)) !== false ||
         strpos($path, Properties::get(Properties::PATH_DYNAMIC_LAYOUT_CSS)) !== false ||
         strpos($path, Properties::get(Properties::PATH_DYNAMIC_PAGE_CSS)) !== false) &&

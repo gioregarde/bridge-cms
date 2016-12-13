@@ -35,7 +35,7 @@ class BaseController {
 
     function action() {
         if (get_class($this) == 'BaseController') {
-            $page_model = PageDao::findByUrl(ltrim($_SERVER['REQUEST_URI'], Properties::PATH_DIV));
+            $page_model = PageDao::findByUrl(Properties::getRoot($_SERVER['REQUEST_URI'], Properties::PATH_DIV));
             $this -> response -> setDto(new PageDto($page_model));
 
             $dto_array = array();
