@@ -1,6 +1,7 @@
 <?php 
 
     require_once('Properties.php');
+    require_once('init/Init.php');
 
     // load core files
     foreach (scandir(__DIR__.Properties::PATH_DIV.Properties::get(Properties::PATH_CORE)) as $file) {
