@@ -29,7 +29,6 @@ class Init {
             $ad_password = self::checkField('ad_password');
             $st_name = self::checkField('st_name');
 
-            require_once(self::INIT_PAGE);
             if (count(self::$error_msg) == 0) {
                 // prepare sql
                 $sql = file_get_contents(self::SQL_FILE);
@@ -61,6 +60,8 @@ class Init {
                 $conn = null;
 
             }
+
+            require_once(self::INIT_PAGE);
             die;
         }
 
@@ -75,7 +76,5 @@ class Init {
     }
 
 }
-
-Init::start();
 
 ?>

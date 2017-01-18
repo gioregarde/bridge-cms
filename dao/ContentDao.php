@@ -3,12 +3,12 @@
 class ContentDao extends BaseDao {
 
     static function findAll() {
-        return parent::findAll('CONTENT', 'ContentModel');
+        return parent::findAllSQL('CONTENT', 'ContentModel');
     }
 
     static function findAllByContentType($content_type_id) {
         $statement = "SELECT * FROM CONTENT WHERE CONTENT_TYPE_ID = ?";
-        $result = parent::select($statement, array($content_type_id));
+        $result = parent::selectSQL($statement, array($content_type_id));
         $model_array = array();
         foreach ($result as $item) {
             array_push($model_array, new ContentModel($item));
@@ -18,22 +18,22 @@ class ContentDao extends BaseDao {
 
     static function findById($id) {
         $statement = "SELECT * FROM CONTENT WHERE ID = ?";
-        return new ContentModel(parent::selectOne($statement, array($id)));
+        return new ContentModel(parent::selectOneSQL($statement, array($id)));
     }
 
     static function insert($model) {
         $statement = "INSERT CONTENT (CONTENT_TYPE_ID, NAME, USER_ID) VALUES (?, ?, ?)";
-        $model -> setId(parent::insert($statement, array($model -> getContentTypeId(), $model -> getName(), $model -> getUserId())));
+        $model -> setId(parent::insertSQL($statement, array($model -> getContentTypeId(), $model -> getName(), $model -> getUserId())));
     }
 
     static function update($model) {
         $statement = "UPDATE CONTENT SET NAME = ?, DATETIME = NOW(), USER_ID = ? WHERE ID = ?";
-        return parent::update($statement, array($model -> getName(), $model -> getUserId(), $model -> getId()));
+        return parent::updateSQL($statement, array($model -> getName(), $model -> getUserId(), $model -> getId()));
     }
 
     static function delete($id_array) {
         $statement = "DELETE FROM CONTENT WHERE ID IN (".implode(',', array_fill(0, count($id_array), '?')).')';
-        return parent::delete($statement, $id_array);
+        return parent::deleteSQL($statement, $id_array);
     }
 
 }

@@ -4,7 +4,7 @@ class BaseDao {
 
     const SELECT_ALL = ' SELECT * FROM ';
 
-    protected static function findAll($table_name, $model_name) {
+    protected static function findAllSQL($table_name, $model_name) {
         $result = DBConnection::sql(self::SELECT_ALL.$table_name) -> fetchAll();
         $model_array = array();
         foreach ($result as $item) {
@@ -13,24 +13,24 @@ class BaseDao {
         return $model_array;
     }
 
-    protected static function selectOne($statement, $values = null) {
+    protected static function selectOneSQL($statement, $values = null) {
         return DBConnection::sql($statement, $values) -> fetch();
     }
 
-    protected static function select($statement, $values = null) {
+    protected static function selectSQL($statement, $values = null) {
         return DBConnection::sql($statement, $values) -> fetchAll();
     }
 
-    protected static function insert($statement, $values) {
+    protected static function insertSQL($statement, $values) {
         DBConnection::sql($statement, $values);
         return DBConnection::getInsertedIndex();
     }
 
-    protected static function update($statement, $values) {
+    protected static function updateSQL($statement, $values) {
         return DBConnection::sql($statement, $values) -> rowCount();
     }
 
-    protected static function delete($statement, $values) {
+    protected static function deleteSQL($statement, $values) {
         return DBConnection::sql($statement, $values) -> rowCount();
     }
 

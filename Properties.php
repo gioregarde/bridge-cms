@@ -69,15 +69,23 @@ class Properties {
     }
 
     public static function getUrlRoot($isPrefix = false) {
+        $root_dir = __DIR__;
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            $root_dir = str_replace('\\', '/', __DIR__);
+        }
         if ($isPrefix) {
-            return self::PATH_DIV.str_replace($_SERVER['DOCUMENT_ROOT'].'/', '', __DIR__);
+            return str_replace($_SERVER['DOCUMENT_ROOT'], '', $root_dir);
         } else {
-            return str_replace($_SERVER['DOCUMENT_ROOT'].'/', '', __DIR__).self::PATH_DIV;
+            return str_replace($_SERVER['DOCUMENT_ROOT'].'/', '', $root_dir).self::PATH_DIV;
         }
     }
 
     public static function getRoot($url) {
-        return str_replace(str_replace($_SERVER['DOCUMENT_ROOT'], '', __DIR__.Properties::PATH_DIV), '', $url);
+        $root_dir = __DIR__;
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            $root_dir = str_replace('\\', '/', __DIR__);
+        }
+        return str_replace(str_replace($_SERVER['DOCUMENT_ROOT'], '', $root_dir.Properties::PATH_DIV), '', $url);
     }
 
 }

@@ -19,7 +19,7 @@ class AdminContentAddController extends BaseController {
                 redirect('/admin/content?action=Success&name='.$model -> getName());
             } else {
                 $this -> response -> setError($this -> request -> getErrors());
-                $dto = new AdminContentAddDto($this -> request);
+                $this -> response -> setDto( new AdminContentAddDto($this -> request));
             }
         } else {
             $this -> response -> setDto(new AdminContentAddDto());

@@ -49,7 +49,7 @@ class BaseController {
             }
             $this -> response -> setDtoArray($dto_array);
         } 
-        if (isset($_SESSION[Properties::SESSION_AUTHENTICATED_USER_ID])) {
+        if (isAuthenticated()) {
             $this -> user_id = $_SESSION[Properties::SESSION_AUTHENTICATED_USER_ID];
         }
     }

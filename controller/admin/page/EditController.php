@@ -102,6 +102,8 @@ class AdminPageEditController extends BaseController {
             } else {
                 $this -> response -> setError($this -> request -> getErrors());
                 $dto = new AdminPageEditDto($this -> request);
+
+                $page_content_array = PageContentDao::findByPageId($this -> request -> getId());
             }
         } else {
             $model = PageDao::findById($this -> request -> getId());

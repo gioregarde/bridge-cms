@@ -10,6 +10,8 @@
         }
     }
 
+    Init::start();
+
     try {
         $path = explode(Properties::PATH_DIV, ucwords(strtolower(Properties::getRoot(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))), Properties::PATH_DIV));
         $controller_name = join($path).Properties::get(Properties::FILE_EXT_CONTROLLER);
