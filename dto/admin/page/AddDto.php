@@ -4,6 +4,7 @@ class AdminPageAddDto extends BaseDto {
 
     protected $name;
     protected $url;
+    protected $homepage;
     protected $content = array();
     protected $section = array();
     protected $header;
@@ -35,6 +36,14 @@ class AdminPageAddDto extends BaseDto {
 
     function getUrl() {
         return $this -> url;
+    }
+
+    function setHomepage($par) {
+        $this -> homepage = $par;
+    }
+
+    function getHomepage() {
+        return $this -> homepage;
     }
 
     function setContent($par) {

@@ -142,6 +142,7 @@ CREATE TABLE IF NOT EXISTS `db_name`.`page` (
   `datetime` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` INT NOT NULL,
   `layout_id` INT NOT NULL,
+  `homepage` INT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `url_UNIQUE` (`url` ASC),
   INDEX `fk_page_user1_idx` (`user_id` ASC),

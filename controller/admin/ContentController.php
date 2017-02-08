@@ -22,6 +22,8 @@ class AdminContentController extends BaseController {
                 $service = new AdminContentService();
                 if ($service -> deleteContent($this -> request, 1)) {
                     $this -> response -> addNotification('Delete successful.');
+                } else {
+                    $this -> response -> addError('Delete error');
                 }
             } else {
                 $this -> response -> setError($this -> request -> getErrors());

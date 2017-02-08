@@ -16,11 +16,22 @@ class PageUtil {
 
     // layout
     static function writeLayout($filename, $content) {
+        $content = str_replace('<bridge-misc/>', '<?php $misc = 1; require(\'page/layout/page.php\'); $misc = 0;?>', $content);
+        $content = str_replace('<bridge-header/>', '<?php $header = 1; require(\'page/layout/page.php\'); $header = 0;?>', $content);
+        $content = str_replace('<bridge-nav/>', '<?php $navigation = 1; require(\'page/layout/page.php\'); $navigation = 0;?>', $content);
+        $content = str_replace('<bridge-content/>', '<div class="content"><?php $content = 1; require(\'page/layout/page.php\'); $content = 0;?></div>', $content);
+        $content = str_replace('<bridge-footer/>', '<?php $footer = 1; require(\'page/layout/page.php\'); $footer = 0;?>', $content);
         self::write(self::PATH_LAYOUT.$filename.self::FILENAME_EXT_PHP, $content);
     }
 
     static function getLayout($filename) {
-        return self::get(self::PATH_LAYOUT.$filename.self::FILENAME_EXT_PHP);
+        $content = self::get(self::PATH_LAYOUT.$filename.self::FILENAME_EXT_PHP);
+        $content = str_replace('<?php $misc = 1; require(\'page/layout/page.php\'); $misc = 0;?>', '<bridge-misc/>', $content);
+        $content = str_replace('<?php $header = 1; require(\'page/layout/page.php\'); $header = 0;?>', '<bridge-header/>', $content);
+        $content = str_replace('<?php $navigation = 1; require(\'page/layout/page.php\'); $navigation = 0;?>', '<bridge-nav/>', $content);
+        $content = str_replace('<div class="content"><?php $content = 1; require(\'page/layout/page.php\'); $content = 0;?></div>', '<bridge-content/>', $content);
+        $content = str_replace('<?php $footer = 1; require(\'page/layout/page.php\'); $footer = 0;?>', '<bridge-footer/>', $content);
+        return $content;
     }
 
     static function deleteLayout($filename) {

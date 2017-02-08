@@ -1,6 +1,8 @@
 ul.content-list li {
     margin-bottom: 10px;
 }
-button.content-add {
+
+button.content-add,
+button.content-remove {
     margin-left: 15px;
 }

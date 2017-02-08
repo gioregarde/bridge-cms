@@ -3,7 +3,6 @@
     require_once('Properties.php');
     require_once('init/Init.php');
 
-    // load core files
     foreach (scandir(__DIR__.Properties::PATH_DIV.Properties::get(Properties::PATH_CORE)) as $file) {
         if (strpos($file,Properties::PATH_EXT_PHP) !== false) {
             require_once(Properties::get(Properties::PATH_CORE).Properties::PATH_DIV.$file);

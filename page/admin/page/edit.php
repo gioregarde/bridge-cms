@@ -28,6 +28,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-sm-2">Homepage</label>
+                    <div class="col-sm-9">
+                        <input type="checkbox" class="checkbox" name="homepage" value="1" <?php if ($dto -> getHomepage() == 1) echo 'checked'; ?>/>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-sm-2">Header</label>
                     <input type="hidden" name="headerOld" value="<?php echo $dto -> getHeaderOld(); ?>" />
                     <div class="col-sm-9">

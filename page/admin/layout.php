@@ -21,7 +21,7 @@
     </div>
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10">
-            <form class="form-horizontal" action="<?php echo Properties::getUrlRoot(true); ?>/admin/layout" method="post"
+            <form class="form-horizontal" action="<?php echo Properties::getUrlRoot(true); ?>/admin/layout" method="post">
                 <div class="table-responsive">
                     <table class="table">
                         <thead><tr>

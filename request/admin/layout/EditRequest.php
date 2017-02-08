@@ -46,7 +46,7 @@ class AdminLayoutEditRequest extends BaseRequest {
     function valid() {
         parent::addError(ErrorUtil::isRequired('Name', $this -> name));
         parent::addError(ErrorUtil::isRequired('Layout', $this -> layout));
-        if (preg_match_all('/class=\".*content.*\"/U', htmlspecialchars_decode($this -> layout)) == 0) {
+        if (preg_match_all('<bridge-content/>', htmlspecialchars_decode($this -> layout)) == 0) {
             parent::addError('Error in Layout');
         }
        return !parent::hasErrors();

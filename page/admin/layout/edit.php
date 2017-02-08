@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="form-group field-ace">
-                    <label class="control-label col-sm-2">Layout (Use header, nav, section, footer tags)</label>
+                    <label class="control-label col-sm-2">Layout&nbsp;<i class="glyphicon glyphicon-info-sign"></i></label>
                     <div class="col-sm-9">
                         <div class="script-panel" id="layout"><?php echo $dto -> getLayout(); ?></div>
                         <textarea class="script-textarea" name="layout"></textarea>

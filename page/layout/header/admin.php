@@ -14,17 +14,22 @@
             <li>
                 <a href="<?php echo Properties::getUrlRoot(true); ?>/admin/site">Site</a>
             </li>
-            <li>
-                <a href="<?php echo Properties::getUrlRoot(true); ?>/admin/content">Content</a>
-            </li>
-            <li>
-                <a href="<?php echo Properties::getUrlRoot(true); ?>/admin/header">Header</a>
-            </li>
-            <li>
-                <a href="<?php echo Properties::getUrlRoot(true); ?>/admin/navigation">Navigation</a>
-            </li>
-            <li>
-                <a href="<?php echo Properties::getUrlRoot(true); ?>/admin/footer">Footer</a>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Components&nbsp;<span class="caret"></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="<?php echo Properties::getUrlRoot(true); ?>/admin/content">Content</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo Properties::getUrlRoot(true); ?>/admin/header">Header</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo Properties::getUrlRoot(true); ?>/admin/navigation">Navigation</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo Properties::getUrlRoot(true); ?>/admin/footer">Footer</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="<?php echo Properties::getUrlRoot(true); ?>/admin/pages">Pages</a>
@@ -34,6 +39,14 @@
             </li>
             <li>
                 <a href="<?php echo Properties::getUrlRoot(true); ?>/admin/file">File Manager</a>
+            </li>
+            <li class="settings dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Settings&nbsp;<span class="caret"></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="<?php echo Properties::getUrlRoot(true); ?>/admin/login?action=logout">Logout</a>
+                    </li>
+                </ul>
             </li>
         </ul>
 

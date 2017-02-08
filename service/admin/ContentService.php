@@ -46,20 +46,22 @@ class AdminContentService {
 
     function deleteContent($request, $content_type_id) {
         $success = false;
-        $count = ContentDao::delete($request -> getId());
-        if ($count > 0) {
-            foreach ($request -> getId() as $id) {
-                $model = new ContentModel();
-                $model -> setId($id);
-                $model -> setContentTypeId($content_type_id);
 
-                $filename = PageUtil::generateFilename($model);
-                PageUtil::deleteView($filename);
-                PageUtil::deleteCss($filename);
-                PageUtil::deleteJs($filename);
-                PageUtil::deleteController($filename);
+        if (count(PageContentDao::findAllByContentId($request -> getId())) == 0) {
+            $count = ContentDao::delete($request -> getId());
+            if ($count > 0) {
+                foreach ($request -> getId() as $id) {
+                    $model = new ContentModel();
+                    $model -> setId($id);
+                    $model -> setContentTypeId($content_type_id);
+                    $filename = PageUtil::generateFilename($model);
+                    PageUtil::deleteView($filename);
+                    PageUtil::deleteCss($filename);
+                    PageUtil::deleteJs($filename);
+                    PageUtil::deleteController($filename);
+                }
+                $success = true;
             }
-            $success = true;
         }
 
         return $success;

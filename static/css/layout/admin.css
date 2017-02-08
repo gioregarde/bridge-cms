@@ -2,6 +2,10 @@
 /* No media query since this is the default in Bootstrap */
 /* Small devices (tablets, 768px and up) */
 
+html { height: 100% !important; }
+body { height: calc(100% - 66px) !important; }
+content { display: block; min-height: calc(100% - 30px); } 
+ 
 content div.top-section {
     margin-top: 66px;
 }
@@ -20,7 +24,9 @@ div.field-ace textarea.script-textarea {
 /* end css for ace panel */
 
 @media (min-width:768px) {
-
+    ul.nav li.settings {
+        display: none;
+    }
 }
 
 /* Medium devices (desktops, 992px and up) */

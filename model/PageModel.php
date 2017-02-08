@@ -4,6 +4,7 @@ class PageModel extends BaseModel {
 
     protected $name;
     protected $url;
+    protected $homepage;
     protected $datetime;
     protected $user_id;
 
@@ -29,6 +30,14 @@ class PageModel extends BaseModel {
 
     function getUrl() {
         return $this -> url;
+    }
+
+    function setHomepage($par) {
+        $this -> homepage = $par;
+    }
+
+    function getHomepage() {
+        return $this -> homepage;
     }
 
     function setDatetime($par) {

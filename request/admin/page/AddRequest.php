@@ -4,6 +4,7 @@ class AdminPageAddRequest extends BaseRequest {
 
     protected $name;
     protected $url;
+    protected $homepage = 0;
     protected $content = array();
     protected $section = array();
     protected $header = null;
@@ -29,6 +30,14 @@ class AdminPageAddRequest extends BaseRequest {
 
     function getUrl() {
         return $this -> url;
+    }
+
+    function setHomepage($par) {
+        $this -> homepage = $par;
+    }
+
+    function getHomepage() {
+        return $this -> homepage;
     }
 
     function setContent($par) {
@@ -82,6 +91,7 @@ class AdminPageAddRequest extends BaseRequest {
     function valid() {
         parent::addError(ErrorUtil::isRequired('Name', $this -> name));
         parent::addError(ErrorUtil::isRequired('Url', $this -> url));
+        parent::addError(ErrorUtil::isRequired('Layout', $this -> layoutId));
        return !parent::hasErrors();
     }
 

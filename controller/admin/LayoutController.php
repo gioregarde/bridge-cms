@@ -19,12 +19,14 @@ class AdminLayoutController extends BaseController {
             }
         } elseif ($this -> request -> getAction() == 'Delete') {
             if ($this -> request -> valid()) {
-                $count = LayoutDao::delete($this -> request -> getId());
-                if ($count > 0) {
-                    $this -> response -> addNotification('Delete successful.');
-                    foreach ($this -> request -> getId() as $id) {
-                        PageUtil::deleteLayout($id);
-                        PageUtil::deleteLayoutCss($id);
+                if (count(PageContentDao::findAllByContentId($this -> request -> getId())) == 0) {
+                    $count = LayoutDao::delete($this -> request -> getId());
+                    if ($count > 0) {
+                        $this -> response -> addNotification('Delete successful.');
+                        foreach ($this -> request -> getId() as $id) {
+                            PageUtil::deleteLayout($id);
+                            PageUtil::deleteLayoutCss($id);
+                        }
                     }
                 }
             } else {
