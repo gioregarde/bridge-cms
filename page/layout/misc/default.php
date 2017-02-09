@@ -1,0 +1,1 @@
+<link rel="stylesheet" type="text/css" href="<?php echo Properties::getUrlRoot(true); ?>/static/css/layout/default.css">

@@ -1,0 +1,37 @@
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+/* Small devices (tablets, 768px and up) */
+
+html { height: 100% !important; }
+body { height: calc(100% - 66px) !important; }
+content { display: block; min-height: calc(100% - 30px); } 
+ 
+content div.top-section {
+    margin-top: 66px;
+}
+footer {
+    height:30px;
+    line-height: 30px;
+}
+
+/* start css for ace panel */
+div.field-ace div.script-panel {
+    height: 400px;
+}
+div.field-ace textarea.script-textarea {
+    display: none;
+}
+/* end css for ace panel */
+
+@media (min-width:768px) {
+    ul.nav li.settings {
+        display: none;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width:992px) {
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
