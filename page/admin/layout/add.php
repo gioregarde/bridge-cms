@@ -31,11 +31,12 @@
                     <label class="control-label col-sm-2">Layout&nbsp;<i class="glyphicon glyphicon-info-sign"></i></label>
                     <div class="col-sm-9">
                         <div class="script-panel" id="layout"><?php if ($dto -> getLayout()) { echo $dto -> getLayout(); } else { ?>&lt;html&gt;
-    &lt;head&gt;&lt;bridge-misc/&gt;&lt;/head&gt;
+    &lt;head&gt;
+        &lt;bridge-misc/&gt;
+    &lt;/head&gt;
     &lt;body&gt;
         &lt;bridge-header/&gt;
         &lt;bridge-nav/&gt;
-        &lt;bridge-content/&gt;
         &lt;bridge-content/&gt;
         &lt;bridge-footer/&gt;
     &lt;/body&gt;

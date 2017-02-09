@@ -32,7 +32,7 @@
                         <tbody>
                             <?php foreach ($dto_array as $dto) { ?>
                                 <tr>
-                                    <td><input type="checkbox" name="id[]" value="<?php echo $dto -> getId(); ?>"/></td>
+                                    <td><input type="checkbox" name="id[]" value="<?php echo $dto -> getId(); ?>" <?php if ($dto -> getId() == '1') { echo 'disabled'; }?>/></td>
                                     <td><?php echo $dto -> getId(); ?></td>
                                     <td><a href="<?php echo Properties::getUrlRoot(true); ?>/admin/layout/edit?id=<?php echo $dto -> getId(); ?>"><?php echo $dto -> getName(); ?></a></td>
                                 </tr>

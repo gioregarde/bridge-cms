@@ -222,3 +222,6 @@ INSERT INTO USER VALUES (1, 'ad_username', 'ad_password', null, 1);
 
 -- INSERT SITE DETAILS
 INSERT INTO SITE VALUES ('st_name', 1, null);
+
+-- INSERT LAYOUT
+INSERT INTO LAYOUT VALUES (1, 'Default', 1, null, 1);

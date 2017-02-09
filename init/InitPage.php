@@ -65,7 +65,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-4">Admin Password :</label>
                             <div class="col-sm-7">
-                                <input type="password" class="form-control" name="ad_password" value="admin">
+                                <input type="password" class="form-control" name="ad_password" value="">
                             </div>
                         </div>
                         <div class="form-group">
